@@ -1,0 +1,26 @@
+.jsearch-bar {
+  margin: 30px;
+  text-align: center;
+}
+
+.jsearch-bar input {
+  width: 50%;
+}
+
+.yt-video-item img {
+  max-width: 64px;
+}
+
+.yt-video-detail .details {
+  margin-top: 25px;
+  padding: 50px;
+  border: 5px solid #333;
+}
+
+.list-group-item{
+  cursor: pointer;
+}
+
+.list-group-item:hover{
+  background-color: #777;
+}
