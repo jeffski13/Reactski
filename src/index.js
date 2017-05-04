@@ -5,6 +5,7 @@ import JBarSearch from './compos/jBarSearch';
 import YTSearch from 'youtube-api-search';
 import YtVidList from './compos/vidlist';
 import YTVidDetail from './compos/vidDets';
+import _ from 'lodash';
 
 //creating new component (like a class), component should produce HTML
 //const -es2016 syntax
@@ -26,11 +27,14 @@ class JApp extends Component{
   }
 
   render(){
+    const videoSearchDebounced = _.debounce((searchStr) => { this.ytVideoSearch(searchStr) }, 300);
+
     return (
+      //create "debounced" function that can only run every x seconds
       //HTML stuff is JSX, then compiled by webpack and babel
       <div>
         {/*pass search callback down into searchbar*/}
-        <JBarSearch onJSearchStrChanged={searchStr => this.ytVideoSearch(searchStr)} />
+        <JBarSearch onJSearchStrChanged={videoSearchDebounced} />
         <YTVidDetail ytVidDetail={this.state.jAppCurrentVid} />
         {/* pass videos (from search above) to YtVidList
           also defining function to update selected video by passing property down to vidList*/}
