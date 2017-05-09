@@ -1,5 +1,6 @@
 /YoutubeApp/node_modules
 /TinderReduxApp/node_modules
+/node_modules
 bundle.js
 npm-debug.log
 

@@ -1,6 +1,6 @@
 //using es6 modules
 import { combineReducers } from 'redux';
-import ReduceHerNovelsList from './reduceHer_novelsList'
+import ReduceHerNovelsList from './reduceher_novelsList'
 
 const rootReduxer = combineReducers({
   //mapping of state here

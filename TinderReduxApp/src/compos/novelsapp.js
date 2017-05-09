@@ -1,14 +1,14 @@
 import React from 'react';
 import {Component} from 'react';
-import NovelsList from '../containHers/novels-list';
+import NovelsListContainer from '../containhers/novels-list-container';
 
 export default class NovelsApp extends Component{
 
   render(){
     return (
       <div>
-        Novels App Compy
-        <NovelsList />
+        <div>Novels, An App Component</div>
+        <NovelsListContainer />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 //using es6 modules
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import NovelsApp from './compos/novelsapp';
 
 class JApp extends Component{
 
@@ -23,4 +24,4 @@ const JeffApp = () => {
 }
 
 //put an instance of the JApp component into page (in DOM)
-ReactDOM.render(<JApp />,  document.querySelector('.jContainHer'));
+ReactDOM.render(<NovelsApp />,  document.querySelector('.jContainHer'));
