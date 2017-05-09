@@ -11,7 +11,7 @@ class JApp extends Component{
   render(){
     return (
       <div>
-
+        WordUp
       </div>
     );
   }
