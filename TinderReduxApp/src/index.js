@@ -2,26 +2,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NovelsApp from './compos/novelsapp';
+import reducers from './reduceHers/index';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware } from 'redux';
 
-class JApp extends Component{
-
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    return (
-      <div>
-        WordUp
-      </div>
-    );
-  }
-}
-
-//new es6 syntax which makes a custom tag ("JeffApp") with html inside
-const JeffApp = () => {
-  return <div>YOLO32</div>;
-}
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 //put an instance of the JApp component into page (in DOM)
-ReactDOM.render(<NovelsApp />,  document.querySelector('.jContainHer'));
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <NovelsApp />
+  </Provider>
+  ,  document.querySelector('.jContainHer'));
