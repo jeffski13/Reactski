@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NovelsApp from './compos/novelsapp';
-import reducers from './reducehers';
+import reducers from './reduceskis';
 //NOTE: if no file in the folder is specified, it will look for index.js
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware } from 'redux';
