@@ -1,3 +1,5 @@
+//needs a reducer function from another file
+
 export default function(){
   //simple list (a peice of the application state)
   return [
