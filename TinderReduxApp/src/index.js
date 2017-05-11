@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NovelsApp from './compos/novelsapp';
-import reducers from './reduceHers/index';
+import reducers from './reducehers/index';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware } from 'redux';
 
