@@ -5,6 +5,7 @@ class NovelDetailContainer extends Component {
 
   render(){
     if(!this.props.novelProp){
+      //show selection prompt message if nothing has been selected
       return (
         <div><strong>No novelski currently selected.</strong></div>
       );
@@ -12,7 +13,6 @@ class NovelDetailContainer extends Component {
 
     return (
       <div>
-        <div>Book Detailski</div>
         <div>
           <h3>Title: </h3>
           <div>{this.props.novelProp.novelName}</div>

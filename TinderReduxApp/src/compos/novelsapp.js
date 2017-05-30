@@ -10,7 +10,6 @@ export default class NovelsApp extends Component{
       <div>
         <div>Novels, An App Component</div>
         <NovelsListContainer />
-        <div>Details be here</div>
         <NovelDetailContainer />
       </div>
     );

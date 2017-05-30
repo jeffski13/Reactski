@@ -8,7 +8,6 @@ class NovelsListContainer extends Component {
 
   //note: key below should be unique (we are assuming the title will be unique)
   renderNovelsList(){
-    console.log(this.props);
     return this.props.novelsProps.map((novel) => {
       return (
           <li
@@ -22,7 +21,6 @@ class NovelsListContainer extends Component {
   }
 
   render(){
-    console.log(this.props.jeffskiProps.jeffskiTestStr);
     return (
       <ul className="list-group col-sm-4">
         {this.renderNovelsList()}
