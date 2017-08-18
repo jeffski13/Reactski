@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WeatherChart from '../components/weather_chart';
+import TheGoogs from '../components/the_googs'
 
 class WeatherGrid extends Component {
 
@@ -13,15 +14,19 @@ class WeatherGrid extends Component {
 
     return(
       <tr key={cityStuff.city.name}>
-        <td>{cityStuff.city.name}</td>
-        <td>
-          <WeatherChart chartData={tempData} color="green" />
+        <td><TheGoogs
+          laty={cityStuff.city.coord.lat}
+          lony={cityStuff.city.coord.lon}
+          cityName={cityStuff.city.name} />
         </td>
         <td>
-          <WeatherChart chartData={preshData} color="red" />
+          <WeatherChart chartData={tempData} color="green" units="k" />
         </td>
         <td>
-          <WeatherChart chartData={humData} color="yellow" />
+          <WeatherChart chartData={preshData} color="red" units="hPa" />
+        </td>
+        <td>
+          <WeatherChart chartData={humData} color="grey" units="%" />
         </td>
       </tr>
     );

@@ -1,7 +1,17 @@
-.searchBoxButton{
-  display: inline; !important
+td, th {
+  vertical-align: middle !important;
+  text-align: center !important;
 }
 
-.searchBox{
-  padding: 5px;
+.input-group {
+  margin: 20px 0px;
+}
+
+svg {
+  height: 150px;
+}
+
+tbody > tr > td:nth-child(1) > div > div:nth-child(2) {
+  height: 200px;
+  width: 250px;
 }
