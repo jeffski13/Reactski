@@ -20,8 +20,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    historyApiFallback: true,
     watchOptions: { poll: true },
+    historyApiFallback: true,
     contentBase: './'
   }
 };

@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+//ADD NEW REDUCERS Here
+import WetherReduxer from './reducer_wezza';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  wezzaState: WetherReduxer
 });
 
 export default rootReducer;
