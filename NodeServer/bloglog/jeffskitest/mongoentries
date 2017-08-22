@@ -1,0 +1,2 @@
+bloglog1
+db.usercollection.insert({ "title" : "testTitle3", "categories" : "testCat3", "content" : "contentTest3" })

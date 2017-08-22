@@ -1,0 +1,18 @@
+{
+  "name": "bloglog",
+  "version": "1.0.0",
+  "description": "none needed",
+  "main": "yolonode.js",
+  "scripts": {
+    "test": "echo \"Eorror no test specified here\" && exit 1",
+    "lint": "eslint src/js"
+  },
+  "author": "jeffski13",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.5.0"
+  }
+}
