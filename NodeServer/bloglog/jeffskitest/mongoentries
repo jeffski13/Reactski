@@ -1,2 +1,7 @@
-bloglog1
-db.usercollection.insert({ "title" : "testTitle3", "categories" : "testCat3", "content" : "contentTest3" })
+./mongod --dbpath /c/Users/Jeff/Documents/GitHub/Reactski/NodeServer/bloglog/data/
+
+show dbs
+use bloglog1
+db.dropDatabase()
+db.blogs.insert({ "title" : "testTitle3", "categories" : "testCat3", "content" : "contentTest3" })
+db.blogs.find().pretty()

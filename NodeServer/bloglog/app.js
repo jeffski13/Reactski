@@ -6,9 +6,25 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // database hookups
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/bloglog1');
+// var mongo = require('mongodb');
+// var monk = require('monk');
+// var db = monk('localhost:27017/bloglog1');
+
+//more db hookups
+//Import the mongoose module
+var mongoose = require('mongoose');
+//Set up default mongoose connection
+var mongoDBUrl = 'mongodb://localhost:27017/bloglog2';
+mongoose.connect(mongoDBUrl);
+//Get the default connection
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("jeffski connection to ", mongoDBUrl);
+});
+//allows us to autoIncrement id field for database entries
+var autoIncrement = require('mongoose-auto-increment');
+autoIncrement.initialize(mongoose.connection);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -27,11 +43,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make our db accessible to our router (must be defined BEFORE routers)
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-});
+//i think this is monk stuff
+// // Make our db accessible to our router (must be defined BEFORE routers)
+// app.use(function(req,res,next){
+//     req.db = db;
+//     next();
+// });
+
 //all the routers we are using
 app.use('/', index);
 app.use('/users', users);
