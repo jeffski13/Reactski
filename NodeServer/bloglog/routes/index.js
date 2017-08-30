@@ -18,6 +18,7 @@ router.get('/blogs', function(req, res, next) {
       return next(err);
     }
     console.log("/blogs get in  ", blogs);
+    res.status(200);
     res.json(blogs);
   });
 });

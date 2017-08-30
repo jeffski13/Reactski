@@ -1,4 +1,6 @@
 ./mongod --dbpath /c/Users/Jeff/Documents/GitHub/Reactski/NodeServer/bloglog/data/
+./mongod --dbpath /c/Users/JeffskiTab/Documents/GitHub/Reactski/NodeServer/bloglog/data
+NOTE: "/data" directory MUST exist, or database will not start
 
 show dbs
 use bloglog1

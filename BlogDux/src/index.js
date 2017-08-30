@@ -7,7 +7,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import BlogIndex from './components/blog_index';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+import promise from 'redux-promise';
+
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 //two components for testing
 class Yolo extends React.Component {
