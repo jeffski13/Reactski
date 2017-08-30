@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import BlogIndex from './components/blog_index';
+import  BlogCreate from './components/blog_create';
 import reducers from './reducers';
 
 import promise from 'redux-promise';
@@ -28,7 +29,10 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        <Route path="/" component={BlogIndex} />
+        <Switch>
+          <Route path="/create" component={BlogCreate} />
+          <Route path="/" component={BlogIndex} />
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>
