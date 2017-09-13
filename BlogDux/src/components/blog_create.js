@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createBlog } from '../actions'
 
 class BlogCreate extends Component {
 
   //tells what Field element will look like
   renderField(field){
+    const { meta : { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`
 
     return (
-      <div className="form-group" >
+      <div className={className} >
         <label>{field.fieldLabel}</label>
         <input
           type="text"
           className="form-control"
           {...field.input} />
-        {field.meta.error}
+        <div className="text-help" >
+          {touched ? error : ''}
+        </div>
       </div>
     );
     //{...field.input} magically hooks in reduxForm
@@ -23,6 +30,7 @@ class BlogCreate extends Component {
 
   onSubmit(values){
     console.log("onsubmission values:", values);
+    this.props.createBlog(values);
   }
 
   //Field tag takes care of all of the redux state stuff and callbacks
@@ -41,7 +49,7 @@ class BlogCreate extends Component {
         <div>Zees iss new blog</div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
           <Field
-            name="blogTitle"
+            name="title"
             fieldLabel="Blog Title"
             component={this.renderField} />
             <Field
@@ -53,6 +61,7 @@ class BlogCreate extends Component {
               fieldLabel="Ze Content"
               component={this.renderField} />
             <button type="submit" className="btn btn-primary">Submission</button>
+            <Link to="/" className="btn btn-danger">See ya!</Link>
         </form>
       </div>
 
@@ -84,4 +93,6 @@ function validateIt(values){
 export default reduxForm({
   validate: validateIt,
   form: 'BlogNewForm'
-})(BlogCreate);
+})(
+  connect(null, {createBlog})(BlogCreate)
+);
