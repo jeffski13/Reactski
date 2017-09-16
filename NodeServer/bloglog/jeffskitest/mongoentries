@@ -1,6 +1,14 @@
+---start up mongo
+/c/Program Files/MongoDB/Server/3.4/bin
 ./mongod --dbpath /c/Users/Jeff/Documents/GitHub/Reactski/NodeServer/bloglog/data/
 ./mongod --dbpath /c/Users/JeffskiTab/Documents/GitHub/Reactski/NodeServer/bloglog/data
+
+
 NOTE: "/data" directory MUST exist, or database will not start
+
+---commands---
+/c/Program Files/MongoDB/Server/3.4/bin
+./mongo
 
 show dbs
 use bloglog1
