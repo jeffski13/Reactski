@@ -13,7 +13,9 @@ class BlogIndex extends Component {
     console.log(this.props.blogs);
     return _.map(this.props.blogs, eachblog => {
       return (
-        <li key={eachblog._id}>{ eachblog.title }</li>
+        <li key={eachblog._id}>
+          <Link to={`/blogs/${eachblog._id}`}>{ eachblog.title }</Link>
+        </li>
       );
     });
   }
@@ -23,7 +25,7 @@ class BlogIndex extends Component {
     return (
       <div>
         <div className="text-xs-right">
-          <Link className="btn btn-primary" to="/create" >Create Blog</Link>
+          <Link className="btn btn-primary" to="/blogs/create" >Create Blog</Link>
         </div>
         <h2>Blog it up</h2>
         <ul>

@@ -5,7 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import BlogIndex from './components/blog_index';
-import  BlogCreate from './components/blog_create';
+import BlogCreate from './components/blog_create';
+import BlogDetail from './components/blog_detail';
 import reducers from './reducers';
 
 import promise from 'redux-promise';
@@ -30,7 +31,8 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/create" component={BlogCreate} />
+          <Route path="/blogs/create" component={BlogCreate} />
+          <Route path="/blogs/:blogId" component={BlogDetail} />
           <Route path="/" component={BlogIndex} />
         </Switch>
       </div>

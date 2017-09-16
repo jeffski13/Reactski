@@ -29,8 +29,10 @@ class BlogCreate extends Component {
   }
 
   onSubmit(values){
-    console.log("onsubmission values:", values);
-    this.props.createBlog(values);
+    //push to api
+    this.props.createBlog(values, () => {
+      this.props.history.push('/');
+    });
   }
 
   //Field tag takes care of all of the redux state stuff and callbacks
