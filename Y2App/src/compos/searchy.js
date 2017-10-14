@@ -14,16 +14,21 @@ class Searchy extends Component {
       <div>
         <div className="input-group">
           <span className="input-group-addon" id="basic-addon1">Search</span>
-          <input type="text" className="form-control"
+          <input type="text" className="form-control search-bar"
             placeholder="Video Name" aria-label="Video Name"
             aria-describedby="basic-addon1"
-            onChange={(event) => this.setState({searchStr: event.target.value}) }
+            onChange={ event => this.onInputChangethed(event.target.value) }
             value={this.state.searchStr}
              />
         </div>
         <div>Value of Input: {this.state.searchStr}</div>
       </div>
     );
+  }
+
+  onInputChangethed(terminology){
+    this.setState({searchStr: terminology});
+    this.props.searchesAChangin(terminology);
   }
 }
 
