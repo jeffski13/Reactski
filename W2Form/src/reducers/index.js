@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import BeastReducer from './reducer_beasts';
+import BeastReducer from './beasts';
+import CurrentBeastReducer from './current_beast'
 
 const rootReducer = combineReducers({
-  beasts: BeastReducer
+  allBeasts: BeastReducer,
+  currentBeast: CurrentBeastReducer
 });
 
 export default rootReducer;

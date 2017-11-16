@@ -9,7 +9,7 @@ const MovieItem = (props) => {
         </div>
         <div className="media-body">
           <div className="media-heading">
-          {props.title}
+            {props.title}
           </div>
         </div>
       </div>
