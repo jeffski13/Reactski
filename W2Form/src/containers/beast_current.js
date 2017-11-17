@@ -4,14 +4,20 @@ import { connect } from 'react-redux';
 class BeastCurrent extends Component{
 
   render(){
-
-    let selectedBeast =  'NA';
-    if(this.props.disBeast !== null){
-      selectedBeast = this.props.disBeast.name;
+    //if there is no selection, prompt user to make one
+    if(!this.props.disBeast){
+        return (
+          <div>Please click a Beast!</div>
+        );
     }
 
+    //display info on selected beast
     return (
-      <div>CurrentBeast: {selectedBeast}</div>
+      <div>
+        <h3><strong>Current Beast:</strong> {this.props.disBeast.name}</h3>
+        <div><strong>Race:</strong> {this.props.disBeast.type}</div>
+        <div><strong>Details:</strong> {this.props.disBeast.origin}</div>
+      </div>
     );
   }
 }
