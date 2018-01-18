@@ -4,21 +4,35 @@ import TalkBox from '../../src/components/TalkBox';
 
 describe('Talk Box Testes', ()=>{
 
-  let composki;
+  let talkBoxComponent;
 
   beforeEach(()=>{
-    composki = renderComponent(TalkBox);
+    talkBoxComponent = renderComponent(TalkBox);
   });
 
   it('has correct css class', ()=>{
-    expect(composki).to.have.class('talkBoxClass');
+    expect(talkBoxComponent).to.have.class('talkBoxClass');
   });
 
   it('has a text area markup tag', ()=>{
-    expect(composki.find('textarea')).to.exist;
+    expect(talkBoxComponent.find('input')).to.exist;
   });
 
   it('has a clickable inputty thing', ()=>{
-    expect(composki.find('button')).to.exist;
+    expect(talkBoxComponent.find('button')).to.exist;
+  });
+
+  describe('what happens when words are entered', ()=>{
+    beforeEach(()=>{
+      talkBoxComponent.find('input').simulate('change', 'test data words');
+    });
+
+    it('has words that were worded', ()=>{
+      expect(talkBoxComponent.find('input')).to.have.value('test data words');
+    });
+
+    it('clears input when button pressed', ()=>{
+
+    });
   });
 });

@@ -18,5 +18,3 @@ describe('The Appski Component', () =>{
   //expect says something is or isnt true about something
 
 });
-
-
