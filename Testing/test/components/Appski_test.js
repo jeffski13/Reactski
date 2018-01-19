@@ -12,9 +12,11 @@ describe('The Appski Component', () =>{
 
   //it tests one thing in a components
   it('show box for wordy words', ()=>{
+    //expect says something is or isnt true about something
      expect(composki.find('.talkBoxClass')).to.exist;
   });
 
-  //expect says something is or isnt true about something
-
+  it('shows a talks list of words', ()=>{
+    expect(composki.find('.wordsSaidList')).to.exist;
+  });
 });

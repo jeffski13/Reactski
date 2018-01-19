@@ -31,8 +31,9 @@ describe('Talk Box Testes', ()=>{
       expect(talkBoxComponent.find('input')).to.have.value('test data words');
     });
 
-    it('clears input when button pressed', ()=>{
-
+    it('clears input when form submit event', ()=>{
+      talkBoxComponent.simulate('submit');
+      expect(talkBoxComponent.find('input')).to.have.value('');
     });
   });
 });
