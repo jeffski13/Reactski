@@ -17,33 +17,18 @@ class NavigationBar extends Component{
     this.state = {
       open: false
     };
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleDefaultRoute = this.handleDefaultRoute.bind(this);
-    this.handleHomeBaseRoute = this.handleHomeBaseRoute.bind(this);
-    this.handleVaultRoute = this.handleVaultRoute.bind(this);
+    this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
   }
 
-  handleToggle(){
+  handleDrawerToggle(){
     this.setState({open: !this.state.open});
-  }
-
-  handleDefaultRoute(){
-    this.handleNavigation('/')
-  }
-
-  handleHomeBaseRoute(){
-    this.handleNavigation('/homeBase')
-  }
-
-  handleVaultRoute(){
-    this.handleNavigation('/treasureVault')
   }
 
   handleNavigation(route){
     browserHistory.push(route);
-    this.handleToggle();
+    this.handleDrawerToggle();
   }
 
   authenticateUser(){
@@ -60,25 +45,25 @@ class NavigationBar extends Component{
       <div>
         <AppBar
           title="High Componentskis"
-          onLeftIconButtonClick={this.handleToggle }
+          onLeftIconButtonClick={this.handleDrawerToggle}
         />
         <Drawer
           docked={false}
-          width={200}
+          width={250}
           open={this.state.open}
           onRequestChange={(open) => this.setState({ open })}
         >
           <MenuItem
             primaryText="Default"
-            onClick={this.handleDefaultRoute}
+            onClick={()=> this.handleNavigation('/')}
           />
           <MenuItem
             primaryText="Main Base Encampment"
-            onClick={this.handleHomeBaseRoute}
+            onClick={()=> this.handleNavigation('/homeBase')}
           />
           <MenuItem
             primaryText="Vault"
-            onClick={this.handleVaultRoute}
+            onClick={()=> this.handleNavigation('/treasureVault')}
           />
         <Divider />
           <MenuItem
