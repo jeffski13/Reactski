@@ -7,6 +7,7 @@ import { Router, Route, browserHistory } from 'react-router';
 
 import App from './components/App';
 import MainBase from './components/MainBase';
+import RequireGuildMembership from './components/higherOrder/RequireGuildMembership';
 import TreasureRoom from './components/TreasureRoom';
 import reducers from './reducers';
 
@@ -18,7 +19,7 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={App} >
           <Route path="homeBase" component={MainBase} />
-          <Route path="treasureVault" component={TreasureRoom} />
+          <Route path="treasureVault" component={RequireGuildMembership(TreasureRoom)} />
         </Route>
       </Router>
     </MuiThemeProvider>
