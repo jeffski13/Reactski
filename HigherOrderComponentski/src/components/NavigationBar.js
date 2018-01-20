@@ -82,8 +82,8 @@ class NavigationBar extends Component{
           />
         <Divider />
           <MenuItem
-            primaryText={this.props.authStatus.loggedIn ? "Sign Out" : "Sign In"}
-            onClick={this.props.authStatus.loggedIn ? this.logoutUser : this.authenticateUser}
+            primaryText={this.props.isGuildMember ? "Sign Out" : "Sign In"}
+            onClick={this.props.isGuildMember ? this.logoutUser : this.authenticateUser}
             >
           </MenuItem>
         </Drawer>
@@ -98,7 +98,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state){
-  return{authStatus: state.authStatus}
+  return{isGuildMember: state.authStatus}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
