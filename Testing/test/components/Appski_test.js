@@ -1,4 +1,4 @@
-import { renderComponent, expect } from '../test_helper';
+import { renderReactComponent, expect } from '../test_helper';
 import Appski from '../../src/components/Appski';
 //describe groups tests together in togetherness
 describe('The Appski Component', () =>{
@@ -6,7 +6,7 @@ describe('The Appski Component', () =>{
   let composki;
 
   beforeEach(()=>{
-    composki = renderComponent(Appski);
+    composki = renderReactComponent(Appski);
   });
 
 

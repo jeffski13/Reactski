@@ -1,4 +1,4 @@
-import {renderComponent, expect} from '../test_helper';
+import {renderReactComponent, expect} from '../test_helper';
 
 import TalkBox from '../../src/components/TalkBox';
 
@@ -7,7 +7,7 @@ describe('Talk Box Testes', ()=>{
   let talkBoxComponent;
 
   beforeEach(()=>{
-    talkBoxComponent = renderComponent(TalkBox);
+    talkBoxComponent = renderReactComponent(TalkBox);
   });
 
   it('has correct css class', ()=>{

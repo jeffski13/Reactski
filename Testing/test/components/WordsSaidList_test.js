@@ -1,4 +1,4 @@
-import {renderComponent, expect} from '../test_helper';
+import {renderReactComponent, expect} from '../test_helper';
 import WordsSaidList from '../../src/components/WordsSaidList';
 
 describe('WordsSaidList component', ()=>{
@@ -6,7 +6,7 @@ describe('WordsSaidList component', ()=>{
 
   beforeEach(()=>{
     const wordsSaidProps = {wordsSaid:['the first words', "the forgotten ones", 'the last words']};
-    wordsSaidListComponent = renderComponent(WordsSaidList, null, wordsSaidProps);
+    wordsSaidListComponent = renderReactComponent(WordsSaidList, null, wordsSaidProps);
   });
 
   it('shows items for each words said', ()=>{

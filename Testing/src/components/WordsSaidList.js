@@ -30,6 +30,7 @@ class WordsSaidList extends Component{
 
 }
 
+//connect to redux state
 function mapStateToProps(state){
   return {prevWordsSaid: state.wordsSaid};
 }

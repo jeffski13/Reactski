@@ -48,6 +48,7 @@ class TalkBox extends Component{
   }
 }
 
+//connect to action
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ saveWords }, dispatch);
 }

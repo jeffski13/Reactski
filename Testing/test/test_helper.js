@@ -1,36 +1,47 @@
-import _$ from 'jquery';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
 import jsdom from 'jsdom';
+import jqueryImport from 'jquery';
+import TestUtils from 'react-addons-test-utils';
+import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
-import chaiJquery from 'chai-jquery';
+import React from 'react'; //needs to be imported any time we use jsx
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import chaiJquery from 'chai-jquery';
+
 import reducers from '../src/reducers';
 
+//set up testing environment to run as if its a browser
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
-global.navigator = global.window.navigator;
-const $ = _$(window);
+//assign jquery $ var to a custom window endpoint (our fake browser)
+const $ = jqueryImport(global.window);
 
-chaiJquery(chai, chai.util, $);
+//render react component method
+ function renderReactComponent(ComponentClass, props, state){
+   const componentInst = TestUtils.renderIntoDocument(
+      <Provider store={createStore(reducers, state)}>
+        <ComponentClass {...props} />
+      </Provider>
+    );
 
-function renderComponent(ComponentClass, props = {}, state = {}) {
-  const componentInstance =  TestUtils.renderIntoDocument(
-    <Provider store={createStore(reducers, state)}>
-      <ComponentClass {...props} />
-    </Provider>
-  );
+   //produce the html
+   //wrap as jquery element ($) to give access to chai jquery matchers
+   return $(ReactDOM.findDOMNode(componentInst));
+ }
 
-  return $(ReactDOM.findDOMNode(componentInstance));
-}
-
-$.fn.simulate = function(eventName, value) {
-  if (value) {
+//simulate events method
+//can call with: $('div').simulate('')
+$.fn.simulate = function(eventName, value){
+  if(value){
+    //val sets value of html element (the element here is this)
     this.val(value);
   }
-  TestUtils.Simulate[eventName](this[0]);
-};
 
-export {renderComponent, expect};
+  //0 index because it could be an array
+  TestUtils.Simulate[eventName](this[0]);
+}
+
+//chai jquery setup
+chaiJquery(chai, chai.util, $);
+
+export { renderReactComponent, expect };
