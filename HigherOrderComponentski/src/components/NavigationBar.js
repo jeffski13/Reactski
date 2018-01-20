@@ -2,20 +2,27 @@ import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import { browserHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import login from '../actions/login';
+import logout from '../actions/logout';
 
 class NavigationBar extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      signedIn: false
+      open: false
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleDefaultRoute = this.handleDefaultRoute.bind(this);
     this.handleHomeBaseRoute = this.handleHomeBaseRoute.bind(this);
     this.handleVaultRoute = this.handleVaultRoute.bind(this);
+    this.authenticateUser = this.authenticateUser.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   handleToggle(){
@@ -39,7 +46,16 @@ class NavigationBar extends Component{
     this.handleToggle();
   }
 
+  authenticateUser(){
+    this.props.login();
+  }
+
+  logoutUser(){
+    this.props.logout();
+  }
+
   render(){
+    console.log('jeffskis props', this.props);
     return(
       <div>
         <AppBar
@@ -64,8 +80,10 @@ class NavigationBar extends Component{
             primaryText="Vault"
             onClick={this.handleVaultRoute}
           />
+        <Divider />
           <MenuItem
-            primaryText={this.state.signedIn ? "Sign Out" : "Sign In"}
+            primaryText={this.props.authStatus.loggedIn ? "Sign Out" : "Sign In"}
+            onClick={this.props.authStatus.loggedIn ? this.logoutUser : this.authenticateUser}
             >
           </MenuItem>
         </Drawer>
@@ -75,4 +93,12 @@ class NavigationBar extends Component{
 
 }
 
-export default NavigationBar;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ login, logout }, dispatch);
+}
+
+function mapStateToProps(state){
+  return{authStatus: state.authStatus}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
