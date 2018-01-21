@@ -40,7 +40,6 @@ class NavigationBar extends Component{
   }
 
   render(){
-    console.log('jeffskis props', this.props);
     return(
       <div>
         <AppBar

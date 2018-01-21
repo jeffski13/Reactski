@@ -7,7 +7,7 @@ export default () => {
       <div>Secret Treasure Vault</div>
       <div>* * * Guild Members Only * * *</div>
       <br />
-      <Card>
+      <Card className="treasureCard" >
         <CardHeader
           title="Hoard Guardian"
           subtitle="Black Doves Watch"

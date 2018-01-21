@@ -1,16 +1,41 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 export default function(ComposedComponent){
-  class RequireGuildMembership extends Component{
+
+  class requireGuildMembership extends Component{
+
+    static contextTypes = {
+      router: React.PropTypes.object
+    }
+
+    //runs before first render
+    componentWillMount(){
+      if(!this.props.isGuildMember){
+        this.context.router.push('/accessDenied');
+      }
+    }
+
+    //called when props are rehanded to component
+    componentWillUpdate(updatedProps){
+      if(!updatedProps.isGuildMember){
+        this.context.router.push('/');
+      }
+    }
+
     render(){
-      console.log('jeffski, higher rendering, ', ComposedComponent);
       return(
         <ComposedComponent {...this.props} />
       );
     }
+
   }
 
-  return RequireGuildMembership;
+  function mapStateToProps(state){
+    return{isGuildMember: state.authStatus}
+  }
+  return connect(mapStateToProps)(requireGuildMembership);
+
 }
 
 /* [for Reference: Lecture 41: HOC Scaffold Code,
