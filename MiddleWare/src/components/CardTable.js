@@ -9,12 +9,15 @@ class CardTable extends Component{
   }
 
   renderSummonCard(summonInfoItem){
+    const addr = summonInfoItem.address;
+    const desc = addr.street.concat(addr.suit, ' ', addr.city, ',', addr.zipcode );
     return(
       <SummonInfoCard
         name={summonInfoItem.name}
-        title={summonInfoItem.title}
-        description={summonInfoItem.description}
+        title={summonInfoItem.phone}
+        description={desc}
         imgName={summonInfoItem.imgName}
+        website={summonInfoItem.website}
         />
     );
   }

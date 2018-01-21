@@ -6,8 +6,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './components/App';
 import reducers from './reducers';
+import PromiseHelper from './middleswares/PromiseHelper';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(PromiseHelper)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

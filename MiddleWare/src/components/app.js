@@ -10,13 +10,11 @@ import getSummonsInfo from '../actions/getSummonsInfo';
 class App extends Component {
 
   componentWillMount(){
-    _.delay(()=>{
-      this.props.getSummonsInfo();
-    }, 2500);
+    console.log('jeffski mount App');
+    this.props.getSummonsInfo();
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.props.summonsInfo.length === 0
