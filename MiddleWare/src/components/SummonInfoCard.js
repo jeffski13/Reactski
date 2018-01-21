@@ -6,7 +6,7 @@ class SummonInfoCard extends Component{
   render(){
 
     return(
-      <Card style={{ margin: 30, flex:1, width: '26%' }}>
+      <Card className="summonCard">
         <CardHeader
           title={this.props.name}
           subtitle={this.props.title}
