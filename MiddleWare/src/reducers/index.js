@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import summonsInfoReducer from './TheSummons';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  summonsInfo: summonsInfoReducer
 });
 
 export default rootReducer;
