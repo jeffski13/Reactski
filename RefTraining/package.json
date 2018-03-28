@@ -1,0 +1,22 @@
+{
+  "name": "avatest",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "ava",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.3",
+    "enzyme": "^3.3.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.2.0"
+  }
+}
