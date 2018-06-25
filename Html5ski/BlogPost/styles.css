@@ -1,0 +1,93 @@
+/*star affects all elements
+so here we are getting rid of all default margin and padding
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+/*global rule*/
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+h1, h2 {
+    font-family: fantasy;    
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.containher{
+    width: 75%;
+    margin: 30px auto 0 auto;
+}
+
+.clear {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*main text sections*/
+.sectionOfWords {
+    width: 75%;
+    float: left;
+    padding-right: 30px;
+    position: relative;
+}
+
+.wordsDateWritten {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+.paraText{
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.sectionOfWords img {
+    height: 300px;
+    width: auto;
+}
+
+/*aditional text section*/
+.sectionOfMoreWords {
+    width: 25%;
+    float: left;
+}
+
+.moreWords {
+    margin-bottom: 20px;
+}
+
+/*author section*/
+.sectionOfAuthors {
+    border-top: 2px solid #bbb;
+    padding-top: 10px; 
+}
+
+.sectionOfAuthors img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    float: left;
+}
+
+#authorOfText{
+    font-size: 22px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 30px;
+}
