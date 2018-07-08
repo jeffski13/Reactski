@@ -17,12 +17,6 @@ html {
     text-rendering: optimizeLegibility;
 }
 
-.row {
-    max-width: 1140px;
-    /*top/bottom left/right measurements*/
-    margin: 0 auto;
-}
-
 h1 {
     margin-top: 0;
     margin-bottom: 15px;
@@ -32,10 +26,17 @@ h1 {
     color: orangered;
     letter-spacing: 1px;
     word-spacing: 3px;
-    
 }
 
+.row {
+    max-width: 1140px;
+    /*top/bottom left/right measurements*/
+    margin: 0 auto;
+}
 
+.section {
+    padding: 80px 0px;
+}
 /*-------------------------------------------
 ------- Main Page Header ------------
 --------------------------------------------*/
@@ -132,4 +133,13 @@ header {
 .buttone-ghost:active {
     color: #fff7f4;
     background-color: rgba(255, 179, 145, 0.51);
+}
+
+
+/*-------------------------------------------
+------- Information ------------
+--------------------------------------------*/
+
+.overview-details {
+    
 }
