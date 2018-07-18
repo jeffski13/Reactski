@@ -13,32 +13,115 @@ html {
     color: #ccc;
     font-weight: 400;
     font-family: 'Arial', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     text-rendering: optimizeLegibility;
+}
+
+h1, 
+h2,
+h3 {
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-family: 'MedievalSharp', cursive, 'Arial', sans-serif;
 }
 
 h1 {
     margin-top: 0;
     margin-bottom: 15px;
-    font-family: 'MedievalSharp', cursive, 'Arial', sans-serif;
-    font-weight: bolder;
-    font-size: 200%;
+    font-size: 300%;
     color: orangered;
-    letter-spacing: 1px;
     word-spacing: 3px;
 }
 
+h2 {
+    font-size: 200%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 100%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 .row {
-    max-width: 1140px;
+    max-width: 1300px;
     /*top/bottom left/right measurements*/
     margin: 0 auto;
 }
 
+
 .section {
     padding: 80px 0px;
 }
+
+.section-header-title:after {
+    display: block;
+    height: 2px;
+    background-color: #c43500;
+    content: " ";
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.section-header-text {
+    line-height: 150%;
+    margin-bottom: 30px;
+}
+
+.clearfloatfix {zoom: 1}
+.clearfloatfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
 /*-------------------------------------------
-------- Main Page Header ------------
+------- Buttons ------------
+--------------------------------------------*/
+
+.buttone:link,
+.button:visited { 
+    display: inline-block;
+    font-weight: 500;
+    font-size: 25px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.buttone-full {
+    color: #c43500;
+    background-color: whitesmoke;
+    border: 1px solid #fff;
+}
+
+.buttone-full:hover,
+.buttone-full:active {
+    background-color: #d1d1d1;
+    color: orangered;
+}
+
+.buttone-ghost {
+    color: antiquewhite;
+    border: 2px solid;
+}
+
+.buttone-ghost:hover,
+.buttone-ghost:active {
+    color: #fff7f4;
+    background-color: rgba(255, 179, 145, 0.51);
+}
+
+/*-------------------------------------------
+------- Header Section ------------
 --------------------------------------------*/
 
 #main-link-left {
@@ -50,17 +133,17 @@ header {
     background-size: cover;
     background-position: center;
     height: 100vh;
-} 
+}
 
 .dragon-text-box {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 35%;
     transform: translate(-50%, -50%);
 }
 
 .dragon-walker-logo {
-    height: 50px;
+    height: 100px;
     width: auto;
     float: left;
     margin-left: 10px;
@@ -98,48 +181,147 @@ header {
 }
 
 /*-------------------------------------------
-------- Buttons ------------
+------- Overview Information ------------
 --------------------------------------------*/
 
-.buttone:link,
-.button:visited { 
-    display: inline-block;
-    font-weight: 500;
-    font-size: 15px;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 1px;
-    transition: background-color 0.2s, border 0.2s, color 0.2s;
+.overview-details-section {
+    text-align: center;
+    padding: 3%; 
 }
 
-.buttone-full {
+#overview-section-header-text {
+    width: 55%;
+    margin-left: 22.5%;
+    margin-right: 22.5%;
+}
+
+.overview-details-section-icon {
+    display: block;
+    font-size: 310%;
     color: #c43500;
-    background-color: whitesmoke;
-    border: 1px solid #fff;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.buttone-full:hover,
-.buttone-full:active {
-    background-color: #d1d1d1;
-    color: orangered;
+.overview-details-section-title {
+    padding-top: 5px;
 }
 
-.buttone-ghost {
-    color: antiquewhite;
-    border: 1px solid;
+.overview-details-section p {
+    font-size: 90%;
+    line-height: 135%;
+    text-align: justify;
 }
-
-.buttone-ghost:hover,
-.buttone-ghost:active {
-    color: #fff7f4;
-    background-color: rgba(255, 179, 145, 0.51);
-}
-
 
 /*-------------------------------------------
-------- Information ------------
+------- Dragon Examples ------------
 --------------------------------------------*/
 
-.overview-details {
-    
+.showcase-dragons-section {
+    padding: 0;
+}
+
+.showcase-dragons-row {
+    list-style: none;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.showcase-dragons-row li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.showcase-dragon-item {
+    width: 100%;
+    overflow: hidden;
+}
+
+.showcase-dragon-item img {
+    width: 100%;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, filter 0.5s;
+    filter: grayscale(100%);
+}
+
+.showcase-dragon-item img:hover {
+    transform: scale(1.05);
+    filter: grayscale(50%);
+}
+
+/*-------------------------------------------
+------- How We Do the Walkin' Section--------
+--------------------------------------------*/
+
+#how-to-join-section-header-text{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.how-to-join-column {
+    margin-top: 20px;
+}
+
+.how-to-join-column:first-child {
+    text-align: right;
+    padding-right: 3%;
+}
+
+.how-to-join-column:last-child {
+    padding-left: 3%;
+}
+
+#iphone-app-image {
+    width: 40%;
+    padding-top: 50px;
+}
+
+#walk-steps-list {
+    padding-top: 60px;
+}
+
+.walk-step {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.walk-step div {
+    display: inline-block;
+    border: 2px solid #c43500;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding: 2px;
+    float: left;
+    font-size: 125%;
+    margin-right: 30px;
+}
+
+.walk-step p {
+    font-size: 75%;
+    padding-top: 15px;
+}
+
+.app-store-icons-list {
+    list-style: none;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.app-store-icons-list li {
+    display: block;
+    float: left;
+    width: 27%;
+    padding: 3%
+}
+
+.app-store-icons-list-item img {
+    width: 100%;
+    height: auto;    
 }
