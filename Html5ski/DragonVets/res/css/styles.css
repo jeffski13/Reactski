@@ -87,7 +87,7 @@ h3 {
 --------------------------------------------*/
 
 .buttone:link,
-.button:visited { 
+.buttone:visited { 
     display: inline-block;
     font-weight: 500;
     font-size: 25px;
