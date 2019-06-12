@@ -1,9 +1,0 @@
-extends layout
-
-block content
-    h1= title
-    form#formAddUser(name="addblog",method="post",action="/addblog")
-        input#inputTitle(type="text", placeholder="title", name="title")
-        input#inputCategories(type="text", placeholder="categories", name="categories")
-        input#inputContent(type="text", placeholder="content", name="content")
-        button#btnSubmit(type="submit") submit
