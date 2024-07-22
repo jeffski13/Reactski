@@ -29,10 +29,11 @@ private val LightColorScheme = lightColorScheme(primary = Purple40, secondary = 
     onSurface = Color(0xFF1C1B1F),
     */)
 
+/**
+ * @param dynamicColor in Android 12+[`]
+ */
 @Composable
-fun ZergskiTheme(darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true, content: @Composable () -> Unit) {
+fun ZergskiTheme(darkTheme: Boolean = isSystemInDarkTheme(), dynamicColor: Boolean = true, content: @Composable () -> Unit) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

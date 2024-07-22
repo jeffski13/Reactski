@@ -1,6 +1,7 @@
 package ski.jeff.zergski
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,12 +20,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
-fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen: Int = 70) {
+fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen: Int = 80) {
     Image(painter = painterResource(id = R.drawable.homescreen), contentDescription = null,
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.FillWidth
+        modifier = Modifier.fillMaxSize().border(5.dp, Color.Red),
+        contentScale = ContentScale.FillBounds
+
         )
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -36,10 +39,11 @@ fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen
         Text("Howdy. this is Zergski", color = Color.White, style = TextStyle(fontWeight = FontWeight.ExtraBold))
         Spacer(modifier = Modifier.padding(0.dp, startButtonSpaceFromTopOfScreen.dp))
         Button(modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 0.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Black,
+                contentColor = Color(44, 153, 20, 255)),
             onClick = onStartClicked) {
             Text("Start", modifier = Modifier
-                .padding(110.dp,5.dp))
+                .padding(115.dp,5.dp), fontSize = 50.sp)
         }
     }
 }
