@@ -47,7 +47,7 @@ fun MyZergskiApp(creaturesList: List<CreatureFile> = listOf()) {
     var isShowingWelcome by remember { mutableStateOf(true) }
 
     if(isShowingWelcome) {
-        WelcomeToZergski()
+        WelcomeToZergski(onStartClicked = {isShowingWelcome = !isShowingWelcome})
     }
     else {
         ZergskiTheme {
