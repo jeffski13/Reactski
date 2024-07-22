@@ -40,7 +40,8 @@ fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen
         Spacer(modifier = Modifier.padding(0.dp, startButtonSpaceFromTopOfScreen.dp))
         Button(modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 0.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Black,
-                contentColor = Color(44, 153, 20, 255)),
+                contentColor = Color(44, 153, 20, 255),
+            ),
             onClick = onStartClicked) {
             Text("Start", modifier = Modifier
                 .padding(115.dp,5.dp), fontSize = 50.sp)
