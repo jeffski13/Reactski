@@ -15,9 +15,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(primary = Purple80, secondary = PurpleGrey80, tertiary = Pink80)
+private val DarkColorScheme = darkColorScheme(primary = LightPurple, secondary = NeonGreen, tertiary = Pink80)
 
-private val LightColorScheme = lightColorScheme(primary = Purple40, secondary = PurpleGrey40, tertiary = Pink40
+private val LightColorScheme = lightColorScheme(primary = Purple40, secondary = PurpleGrey40, tertiary = DarkGreen
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -51,6 +51,7 @@ fun ZergskiTheme(darkTheme: Boolean = isSystemInDarkTheme(), dynamicColor: Boole
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
+
 
     MaterialTheme(colorScheme = colorScheme, typography = Typography, content = content)
 }

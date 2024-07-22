@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -13,7 +16,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 class MainMostActivity : ComponentActivity() {
@@ -46,8 +51,12 @@ fun ZergskiApp(creaturesList: List<HiveCreatureInformation> = listOf()) {
                     Button(onClick = {isShowingWelcome = !isShowingWelcome}) {
                         Text("Home")
                     }
-                    for(nextCreature in creaturesList){
-                        HiveCreatureInfoCard(nextCreature)
+                    LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
+                        items(items = creaturesList) { nextCreature ->
+                            HiveCreatureInfoCard(nextCreature)
+                        }
+                    }
+                    LazyColumn() {
                     }
                 }
             }
