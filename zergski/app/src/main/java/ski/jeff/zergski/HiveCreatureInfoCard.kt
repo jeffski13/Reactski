@@ -27,11 +27,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+class HiveCreatureInfoCardData(val hiveCreatureInformation: HiveCreatureInformation, val index: Int)
+
 /**
  * thie needs to be called within the [setContent]
  */
 @Composable
-fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
+fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
+    val hiveCreatureInformation = hiveCreatureInfoCardData.hiveCreatureInformation
     var isShowingInfo by rememberSaveable { mutableStateOf(false) }
     val extraRoomskiBelowHeight = if(isShowingInfo) {
         10.dp
@@ -71,9 +74,15 @@ fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
+
                 ) {
                     Text(
                         text = hiveCreatureInformation.name,
+                        color = Color.White,
+                        modifier = Modifier.padding(20.dp, 5.dp),
+                    )
+                    Text(
+                        text = "Order: ${hiveCreatureInfoCardData.index.toString()}",
                         color = Color.White,
                         modifier = Modifier.padding(20.dp, 5.dp),
                     )
@@ -87,7 +96,7 @@ fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
             Row(modifier = Modifier
                 .padding(10.dp, 0.dp)) {
                 if (isShowingInfo) {
-                    Column {
+                    Column (modifier = Modifier.clickable { isShowingInfo = !isShowingInfo },) {
                         Text(
                             text = hiveCreatureInformation.info,
                             color = Color.White,
@@ -104,5 +113,5 @@ fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
 @Preview
 @Composable
 fun previewHiveCreatureInfoCard() {
-    HiveCreatureInfoCard(MainMostActivity.creatureList[0])
+    HiveCreatureInfoCard(HiveCreatureInfoCardData(MainMostActivity.creatureListSource[0], 0))
 }
