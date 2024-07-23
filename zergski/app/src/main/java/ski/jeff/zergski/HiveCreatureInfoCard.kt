@@ -1,8 +1,10 @@
 package ski.jeff.zergski
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -32,12 +33,16 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
     var isShowingInfo by rememberSaveable { mutableStateOf(false) }
-    val extraRoomskiBelow = if(isShowingInfo) {
-        20.dp
+    val extraRoomskiBelowHeight = if(isShowingInfo) {
+        10.dp
     }
     else {
         0.dp
     }
+    val extraRoomskiBelow by animateDpAsState(extraRoomskiBelowHeight,
+        spring(dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow),
+        "some label??? for animation?")
 
     val moreInfoButtonText = if(!isShowingInfo) {
         "wannaSeeMo?"
@@ -46,46 +51,50 @@ fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
     }
 
     Surface(color = Color(54, 11, 102, 255), modifier = Modifier.padding(4.dp)) {
-        Row(modifier = Modifier.padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow).clickable { isShowingInfo = !isShowingInfo },
-            verticalAlignment = Alignment.CenterVertically,
-            ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
-                    contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
-                    modifier = Modifier.size(100.dp).padding(2.dp)
+        Column {
 
-                )
-
-            }
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow)
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = hiveCreatureInformation.name,
-                    color = Color.White,
-                    modifier = Modifier.padding(20.dp, 5.dp),
-                )
-            }
-            Column {
-                ElevatedButton(onClick = { isShowingInfo = !isShowingInfo }, contentPadding = PaddingValues(8.dp)) {
-                    Text(moreInfoButtonText)
+            Row(modifier = Modifier
+                .padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
+                .clickable { isShowingInfo = !isShowingInfo },
+                verticalAlignment = Alignment.CenterVertically,
+                ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
+                        contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
+                        modifier = Modifier
+                            .size(100.dp)
+                            .padding(2.dp)
+                    )
 
                 }
-            }
-        }
-        Row(modifier = Modifier.padding(10.dp, 60.dp, 10.dp)) {
-            if (isShowingInfo) {
-                Column {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) {
                     Text(
-                        text = hiveCreatureInformation.info,
+                        text = hiveCreatureInformation.name,
                         color = Color.White,
-                        modifier = Modifier
-                            .padding(20.dp, 5.dp)
-                            .fillMaxWidth(),
+                        modifier = Modifier.padding(20.dp, 5.dp),
                     )
+                }
+                Column {
+                    ElevatedButton(onClick = { isShowingInfo = !isShowingInfo }, contentPadding = PaddingValues(8.dp)) {
+                        Text(moreInfoButtonText)
+                    }
+                }
+            }
+            Row(modifier = Modifier
+                .padding(10.dp, 0.dp)) {
+                if (isShowingInfo) {
+                    Column {
+                        Text(
+                            text = hiveCreatureInformation.info,
+                            color = Color.White,
+                            modifier = Modifier
+                                .padding(20.dp, 5.dp)
+                        )
+                    }
                 }
             }
         }
@@ -95,5 +104,5 @@ fun HiveCreatureInfoCard(hiveCreatureInformation: HiveCreatureInformation) {
 @Preview
 @Composable
 fun previewHiveCreatureInfoCard() {
-    HiveCreatureInfoCard(HiveCreatureInformation("Mr.Swag", R.drawable.unit_zergling, R.string.zergling_unit_contDesc, "info"))
+    HiveCreatureInfoCard(MainMostActivity.creatureList[0])
 }

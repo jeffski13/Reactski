@@ -1,7 +1,6 @@
 package ski.jeff.zergski
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +24,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen: Int = 80) {
     Image(painter = painterResource(id = R.drawable.homescreen), contentDescription = null,
-        modifier = Modifier.fillMaxSize().border(5.dp, Color.Red),
+        modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.FillBounds
 
         )
