@@ -3,7 +3,10 @@ package ski.jeff.zergski
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,8 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ski.jeff.zergski.ui.theme.ZergskiTheme
@@ -39,15 +44,21 @@ class MainMostActivity : ComponentActivity() {
 
 @Composable
 fun ZergskiApp(creaturesList: List<HiveCreatureInformation> = listOf()) {
-    var isShowingWelcome by remember { mutableStateOf(true) }
+    var isShowingWelcome by rememberSaveable { mutableStateOf(true) }
 
+    val backgroundColor = if(isSystemInDarkTheme()) {
+        Color(0,0,0)
+    }
+    else {
+        Color(1,1,1)
+    }
     ZergskiTheme {
-        Surface(color = MaterialTheme.colorScheme.background) {
+        Surface {
             if(isShowingWelcome) {
                 WelcomeToZergski(onStartClicked = {isShowingWelcome = !isShowingWelcome})
             }
             else {
-                Column {
+                Column(modifier = Modifier.background(color = backgroundColor).fillMaxSize()) {
                     Button(onClick = {isShowingWelcome = !isShowingWelcome}) {
                         Text("Home")
                     }
