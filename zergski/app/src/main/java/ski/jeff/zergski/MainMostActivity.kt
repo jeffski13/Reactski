@@ -52,16 +52,18 @@ class MainMostActivity : ComponentActivity() {
 
         updateCreatureInfoCardDataList()
         setContent {
-            ZergskiApp(hiveCreatureInfoCardDataList)
+            ZergskiTheme {
+                ZergskiApp(hiveCreatureInfoCardDataList)
+            }
         }
     }
 }
 
 @Composable
 fun ZergskiApp(hiveCreatureInfoCardDataList: List<HiveCreatureInfoCardData> = listOf()) {
-    var isShowingWelcome by rememberSaveable { mutableStateOf(true) }
+    var isShowingWelcome by rememberSaveable { mutableStateOf(false) }
 
-    ZergskiTheme {
+
         Surface {
             if(isShowingWelcome) {
                 WelcomeToZergski(onStartClicked = {isShowingWelcome = !isShowingWelcome})
@@ -79,11 +81,14 @@ fun ZergskiApp(hiveCreatureInfoCardDataList: List<HiveCreatureInfoCardData> = li
                 }
             }
         }
-    }
+
 }
 
-@Preview(showBackground = true, widthDp = 415, heightDp = 820)
+@Preview(showBackground = true, widthDp = 415, heightDp = 820,
+    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun AnyNameSkiForPreview() {
-    ZergskiApp(listOf(HiveCreatureInfoCardData(creatureListSource[0], 0)))
+    ZergskiTheme {
+        ZergskiApp(listOf(HiveCreatureInfoCardData(creatureListSource[0], 0)))
+    }
 }
