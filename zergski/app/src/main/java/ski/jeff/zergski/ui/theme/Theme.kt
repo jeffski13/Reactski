@@ -16,22 +16,37 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    secondary = LightGreen,
-    tertiary = LightPink,
-    onBackground = LightBackground,
-    surface = LightBackground,
-    onSurface = LightBackground,
-    primary = LightBackground,
-    onPrimary = LightBackground)
+    secondary = dark_secondary,
+    tertiary = dark_tertiary,
+    onBackground = dark_onBackground,
+    surface = dark_surface,
+    onSurface = dark_onSurface,
+    primary = dark_primary,
+    onPrimary = dark_onPrimary,
+    onSecondary =dark_onSecondary,
+    onTertiary = dark_onTertiary,
+    onPrimaryContainer = dark_onPrimaryContainer,
+    onSecondaryContainer = dark_onSecondaryContainer,
+    onTertiaryContainer = dark_onTertiaryContainer,
+    onSurfaceVariant = dark_onSurfaceVariant,
+)
 
 private val LightColorScheme = lightColorScheme(
-    secondary = PurpleGrey40,
-    tertiary = DarkGreen,
-    onBackground = DarkBackground,
-    surface = DarkBackground,
-    onSurface = DarkBackground,
-    primary = DarkBackground,
-    onPrimary = DarkBackground,
+    secondary = light_secondary,
+    tertiary = light_tertiary,
+    onBackground = light_onBackground,
+    surface = light_surface,
+    onSurface = light_onSurface,
+    primary = light_primary,
+    onPrimary = light_onPrimary,
+    onSecondary =light_onSecondary,
+    onTertiary = light_onTertiary,
+    onPrimaryContainer = light_onPrimaryContainer,
+    onSecondaryContainer = light_onSecondaryContainer,
+    onTertiaryContainer = light_onTertiaryContainer,
+    onSurfaceVariant = light_onSurfaceVariant,
+
+
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
@@ -50,17 +65,6 @@ fun ZergskiTheme(darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit) {
 
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) {
-                println("jeffski dark theme")
-                dynamicDarkColorScheme(context)
-            } else {
-                println("jeffski light theme")
-                dynamicLightColorScheme(context)
-            }
-        }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -57,7 +58,7 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
         "getOuttaHere"
     }
 
-    Surface(color = Color(54, 11, 102, 255), modifier = Modifier.padding(4.dp)) {
+    Surface(modifier = Modifier.padding(4.dp)) {
         Column {
 
             Row(modifier = Modifier
@@ -82,7 +83,6 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                 ) {
                     Text(
                         text = hiveCreatureInformation.name,
-                        color = Color.White,
                         modifier = Modifier.padding(20.dp, 5.dp),
                         style = MaterialTheme.typography.headlineMedium.copy(
                             fontWeight = FontWeight.Bold
@@ -90,12 +90,11 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                     )
                     Text(
                         text = "Order: ${hiveCreatureInfoCardData.index.toString()}",
-                        color = Color.White,
                         modifier = Modifier.padding(20.dp, 5.dp),
                     )
                 }
                 Column {
-                    ElevatedButton(onClick = { isShowingInfo = !isShowingInfo }, contentPadding = PaddingValues(8.dp)) {
+                    Button(onClick = { isShowingInfo = !isShowingInfo }, contentPadding = PaddingValues(8.dp)) {
                         Text(moreInfoButtonText)
                     }
                 }
@@ -106,9 +105,8 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                     Column (modifier = Modifier.clickable { isShowingInfo = !isShowingInfo },) {
                         Text(
                             text = hiveCreatureInformation.info,
-                            color = Color.White,
                             modifier = Modifier
-                                .padding(20.dp, 5.dp)
+                                .padding(20.dp, 5.dp, 20.dp, 20.dp,)
                         )
                     }
                 }
