@@ -47,10 +47,12 @@ fun ZergskiApp(creaturesList: List<HiveCreatureInformation> = listOf()) {
     var isShowingWelcome by rememberSaveable { mutableStateOf(true) }
 
     val backgroundColor = if(isSystemInDarkTheme()) {
+        println("jeffski dark mode")
         Color(0,0,0)
     }
     else {
-        Color(1,1,1)
+        println("jeffski light mode")
+        Color(255, 255, 255, 255)
     }
     ZergskiTheme {
         Surface {
@@ -66,8 +68,6 @@ fun ZergskiApp(creaturesList: List<HiveCreatureInformation> = listOf()) {
                         items(items = creaturesList) { nextCreature ->
                             HiveCreatureInfoCard(nextCreature)
                         }
-                    }
-                    LazyColumn() {
                     }
                 }
             }
