@@ -66,7 +66,7 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                 .clickable { isShowingInfo = !isShowingInfo },
                 verticalAlignment = Alignment.CenterVertically,
                 ) {
-                Column(modifier = Modifier.weight(0.35f)) {
+                Column(modifier = Modifier.weight(0.2f)) {
                     Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
                         contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
                         modifier = Modifier
@@ -77,7 +77,7 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                 }
                 Column(
                     modifier = Modifier
-                        .weight(0.65f)
+                        .weight(0.5f)
                         .fillMaxWidth()
 
                 ) {
@@ -93,7 +93,11 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                         modifier = Modifier.padding(20.dp, 5.dp),
                     )
                 }
-                Column {
+                Column(
+                    modifier = Modifier
+                        .weight(0.3f)
+
+                ) {
                     Button(onClick = { isShowingInfo = !isShowingInfo }, contentPadding = PaddingValues(8.dp)) {
                         Text(moreInfoButtonText)
                     }

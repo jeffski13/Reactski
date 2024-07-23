@@ -38,9 +38,9 @@ class MainMostActivity : ComponentActivity() {
             HiveCreatureInformation("Devourer", R.drawable.unit_devourer, R.string.devourer_unit_contDesc, "Devourers are an evolution of the mutalisk,[1] but have a wasp-like form, and are much larger, slower, but more durable.[2] They retain the mutalisk's signature tail,[2] from which they spit a venom of corrosive acid at aerial targets that can eat through the reinforced armor plating of terran and protoss capital ships.[1] The initial damage these globs inflict is not insignificant, but as spores build up on targets, they will eat through hull plating on the molecular level, making it easier for other attacks to penetrate ship armor.[2] A single spit of venom may splash over multiple targets.[1] The acid spores in the venom may hinder the fighting ability of the target,[3] such as reducing an enemy ship's speed,[2] and will reveal cloaked units.[2] Generally, devourers fly in packs.[4]"),
         )
 
-        val hiveCreatureInfoCardDataList = mutableListOf<HiveCreatureInfoCardData>()
 
-        fun updateCreatureInfoCardDataList() {
+        fun getCreatureInfoCardDataList(): List<HiveCreatureInfoCardData> {
+            val hiveCreatureInfoCardDataList = mutableListOf<HiveCreatureInfoCardData>()
             for(i in 0..100) {
                 val hiveCreatureInformation = if(i < creatureListSource.size) {
                     creatureListSource[i]
@@ -51,15 +51,15 @@ class MainMostActivity : ComponentActivity() {
                 }
                 hiveCreatureInfoCardDataList.add(HiveCreatureInfoCardData(hiveCreatureInformation, (i + 1)))
             }
+            return hiveCreatureInfoCardDataList
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        updateCreatureInfoCardDataList()
         setContent {
             ZergskiTheme {
-                ZergskiApp(hiveCreatureInfoCardDataList)
+                ZergskiApp(getCreatureInfoCardDataList())
             }
         }
     }
