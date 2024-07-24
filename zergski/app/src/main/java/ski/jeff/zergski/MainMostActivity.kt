@@ -3,79 +3,40 @@ package ski.jeff.zergski
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import ski.jeff.zergski.hivecreature.HiveCreatureListProvider
+import ski.jeff.zergski.hivecreatureapp.HiveCreatureListProvider
+import ski.jeff.zergski.hivecreatureapp.HiveCreaureListApp
 import ski.jeff.zergski.ui.theme.ZergskiTheme
+import ski.jeff.zergski.unitsearch.UnitSearchApp
+
+enum class APP_MODES {
+    HIVE_CREATURE_LIST,
+    UNIT_SEARCH
+}
 
 class MainMostActivity : ComponentActivity() {
+    companion object {
+        val CURRENT_APP_MODE = APP_MODES.HIVE_CREATURE_LIST
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             ZergskiTheme {
-                ZergskiApp(HiveCreatureListProvider().getCreatureInfoCardDataList())
-            }
-        }
-    }
-}
-
-@Composable
-fun ZergskiApp(hiveCreatureInfoCardDataList: List<HiveCreatureInfoCardData> = listOf()) {
-    var isShowingWelcome by rememberSaveable { mutableStateOf(true) }
-
-
-        Surface {
-            if(isShowingWelcome) {
-                WelcomeToZergski(onStartClicked = {isShowingWelcome = !isShowingWelcome})
-            }
-            else {
-                Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.onBackground).fillMaxSize()) {
-                    Button(onClick = {isShowingWelcome = !isShowingWelcome}) {
-                        Text("Home")
+                when (CURRENT_APP_MODE) {
+                    APP_MODES.HIVE_CREATURE_LIST -> {
+                        HiveCreaureListApp(HiveCreatureListProvider().getCreatureInfoCardDataList())
                     }
-                    LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
-                        items(items = hiveCreatureInfoCardDataList) { nextCreatureCardData ->
-                            HiveCreatureInfoCard(nextCreatureCardData)
-                        }
+                    APP_MODES.UNIT_SEARCH -> {
+                        UnitSearchApp()
+                    }
+                    else -> {
+                        Text("APPMODE: ${CURRENT_APP_MODE.name}")
                     }
                 }
+
             }
         }
-
-}
-
-@Preview(showBackground = true, widthDp = 415, heightDp = 820,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_NO)
-@Composable
-fun AnyNameSkiForPreview() {
-    ZergskiTheme {
-        ZergskiApp(HiveCreatureListProvider().getPreviewList())
-    }
-}
-
-@Preview(showBackground = true, widthDp = 415, heightDp = 820,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES)
-@Composable
-fun AnyNameSkiForPreviewDarkMode() {
-    ZergskiTheme {
-        ZergskiApp(HiveCreatureListProvider().getPreviewList())
     }
 }

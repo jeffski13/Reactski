@@ -1,6 +1,5 @@
-package ski.jeff.zergski.hivecreature
+package ski.jeff.zergski.hivecreatureapp
 
-import ski.jeff.zergski.HiveCreatureInfoCardData
 import ski.jeff.zergski.R
 
 class HiveCreatureListProvider() {

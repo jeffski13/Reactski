@@ -1,4 +1,4 @@
-package ski.jeff.zergski
+package ski.jeff.zergski.hivecreatureapp
 
 import android.content.res.Configuration
 import androidx.compose.animation.core.Spring
@@ -35,8 +35,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ski.jeff.zergski.hivecreature.HiveCreatureInformation
-import ski.jeff.zergski.hivecreature.HiveCreatureListProvider
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 class HiveCreatureInfoCardData(val hiveCreatureInformation: HiveCreatureInformation, val index: Int)

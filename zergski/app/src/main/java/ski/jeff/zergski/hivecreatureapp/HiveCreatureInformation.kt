@@ -1,4 +1,4 @@
-package ski.jeff.zergski.hivecreature
+package ski.jeff.zergski.hivecreatureapp
 
 /**
  * represents information for a creature of the hive

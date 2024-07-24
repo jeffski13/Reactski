@@ -57,7 +57,7 @@ private val LightColorScheme = lightColorScheme(
     */)
 
 /**
- * @param dynamicColor in Android 12+[`]
+ * @param dynamicColor in Android 12+, not needed for customizable dark theme
  */
 @Composable
 fun ZergskiTheme(darkTheme: Boolean = isSystemInDarkTheme(),
