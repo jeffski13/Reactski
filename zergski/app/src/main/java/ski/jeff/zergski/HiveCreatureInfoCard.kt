@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
@@ -71,21 +72,22 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
         isShowingInfo = !isShowingInfo
     }
 
-    Surface(modifier = Modifier.padding(4.dp)) {
+    Surface(modifier = Modifier.padding(4.dp),
+        shape = RoundedCornerShape(6.dp)) {
         Column {
 
             SelectionContainer {
                 Row(modifier = Modifier
-                    .padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
+                    .padding(2.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
                     .clickable { isShowingInfo = !isShowingInfo },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Column(modifier = Modifier.weight(0.2f)) {
+                    Column(modifier = Modifier.weight(0.25f)) {
                         Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
                             contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
                             modifier = Modifier
                                 .size(100.dp)
-                                .padding(2.dp)
+                                .padding(4.dp)
                         )
 
                     }
@@ -109,7 +111,7 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                     }
                     Column(
                         modifier = Modifier
-                            .weight(0.1f)
+                            .weight(0.15f)
 
                     ) {
                         IconButton(onClick = onCardClicked) {
