@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -73,48 +74,50 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
     Surface(modifier = Modifier.padding(4.dp)) {
         Column {
 
-            Row(modifier = Modifier
-                .padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
-                .clickable { isShowingInfo = !isShowingInfo },
-                verticalAlignment = Alignment.CenterVertically,
+            SelectionContainer {
+                Row(modifier = Modifier
+                    .padding(0.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
+                    .clickable { isShowingInfo = !isShowingInfo },
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                Column(modifier = Modifier.weight(0.2f)) {
-                    Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
-                        contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
+                    Column(modifier = Modifier.weight(0.2f)) {
+                        Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
+                            contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
+                            modifier = Modifier
+                                .size(100.dp)
+                                .padding(2.dp)
+                        )
+
+                    }
+                    Column(
                         modifier = Modifier
-                            .size(100.dp)
-                            .padding(2.dp)
-                    )
+                            .weight(0.6f)
+                            .fillMaxWidth()
 
-                }
-                Column(
-                    modifier = Modifier
-                        .weight(0.6f)
-                        .fillMaxWidth()
+                    ) {
+                            Text(
+                                text = hiveCreatureInformation.name,
+                                modifier = Modifier.padding(20.dp, 5.dp),
+                                style = MaterialTheme.typography.headlineMedium.copy(
+                                    fontWeight = FontWeight.Bold
+                                )
+                            )
+                            Text(
+                                text = "Order: ${hiveCreatureInfoCardData.index.toString()}",
+                                modifier = Modifier.padding(20.dp, 5.dp),
+                            )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(0.1f)
 
-                ) {
-                    Text(
-                        text = hiveCreatureInformation.name,
-                        modifier = Modifier.padding(20.dp, 5.dp),
-                        style = MaterialTheme.typography.headlineMedium.copy(
-                            fontWeight = FontWeight.Bold
-                        )
-                    )
-                    Text(
-                        text = "Order: ${hiveCreatureInfoCardData.index.toString()}",
-                        modifier = Modifier.padding(20.dp, 5.dp),
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .weight(0.1f)
-
-                ) {
-                    IconButton(onClick = onCardClicked) {
-                        Icon(
-                            imageVector = iconLook,
-                            contentDescription = dropdownContentDescription
-                        )
+                    ) {
+                        IconButton(onClick = onCardClicked) {
+                            Icon(
+                                imageVector = iconLook,
+                                contentDescription = dropdownContentDescription
+                            )
+                        }
                     }
                 }
             }
@@ -122,11 +125,13 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                 .padding(10.dp, 0.dp)) {
                 if (isShowingInfo) {
                     Column (modifier = Modifier.clickable { onCardClicked() },) {
-                        Text(
-                            text = hiveCreatureInformation.info,
-                            modifier = Modifier
-                                .padding(20.dp, 5.dp, 20.dp, 20.dp,)
-                        )
+                        SelectionContainer {
+                            Text(
+                                text = hiveCreatureInformation.info,
+                                modifier = Modifier
+                                    .padding(20.dp, 5.dp, 20.dp, 20.dp,)
+                            )
+                        }
                     }
                 }
             }
