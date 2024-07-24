@@ -1,4 +1,4 @@
-package ski.jeff.zergski.hivecreatureapp
+package ski.jeff.zergski.apps.hivecreatureapp
 
 import ski.jeff.zergski.R
 
@@ -51,7 +51,7 @@ class HiveCreatureListProvider() {
                 CREATURE_LIST[i]
             }
             else {
-                CREATURE_LIST[i - (((i/CREATURE_LIST.size)*CREATURE_LIST.size)).coerceAtLeast(0)]
+                CREATURE_LIST[i - (((i/ CREATURE_LIST.size)* CREATURE_LIST.size)).coerceAtLeast(0)]
             }
             hiveCreatureInfoCardDataList.add(HiveCreatureInfoCardData(hiveCreatureInformation, (i + 1)))
         }

@@ -1,4 +1,4 @@
-package ski.jeff.zergski.unitsearch
+package ski.jeff.zergski.apps.unitsearch
 
 import android.content.res.Configuration
 import androidx.compose.material3.ExperimentalMaterial3Api

@@ -1,4 +1,4 @@
-package ski.jeff.zergski.hivecreatureapp
+package ski.jeff.zergski.apps.hivecreatureapp
 
 import android.content.res.Configuration
 import androidx.compose.animation.core.Spring
