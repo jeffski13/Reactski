@@ -17,6 +17,9 @@ fun UnitSearchApp() {
             Row {
                 SearchBar()
             }
+            Row {
+                RaceCategory(Race.previewInfo.name, Race.previewInfo.iconId)
+            }
         }
     }
 }
