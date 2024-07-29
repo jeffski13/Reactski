@@ -33,7 +33,7 @@ class UnitSearchBottomNavigation {
 }
 
 @Composable
-fun UnitSearchBottomNavigation(modifier: Modifier = Modifier) {
+fun UnitSearchBottomNavigationPortrait(modifier: Modifier = Modifier) {
     NavigationBar(modifier = modifier, containerColor = MaterialTheme.colorScheme.surfaceVariant) {
         NavigationBarItem(selected = true, onClick = {}, label = {
             Text(text = UnitSearchBottomNavigation.BOTTOM_NAVIGATION_HOME_TITLE)

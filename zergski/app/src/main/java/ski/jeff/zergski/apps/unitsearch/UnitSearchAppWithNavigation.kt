@@ -7,17 +7,30 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UnitSearchAppWithNavigation(windowSize: WindowSizeClass) {
+    when (windowSize.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> {
+            UnitSearchAppPortrait()
+        }
+        WindowWidthSizeClass.Expanded -> {
+            UnitSearchAppLandscape()
+        }
+    }
+}
+
 @Composable
 fun UnitSearchAppPortrait() {
     ZergskiTheme {
         Scaffold(bottomBar = {
-            UnitSearchBottomNavigation()
+            UnitSearchBottomNavigationPortrait()
         }) {
             UnitSearchApp(Modifier.padding(it))
         }

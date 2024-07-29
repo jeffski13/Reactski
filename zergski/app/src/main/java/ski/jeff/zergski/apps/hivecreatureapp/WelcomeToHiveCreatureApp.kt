@@ -1,4 +1,4 @@
-package ski.jeff.zergski
+package ski.jeff.zergski.hivecreatureapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ski.jeff.zergski.R
 
 @Composable
 fun WelcomeToZergski(onStartClicked: () -> Unit, startButtonSpaceFromTopOfScreen: Int = 80) {
