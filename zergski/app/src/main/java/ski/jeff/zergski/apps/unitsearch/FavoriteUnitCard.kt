@@ -1,12 +1,12 @@
 package ski.jeff.zergski.apps.unitsearch
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -19,7 +19,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ski.jeff.zergski.apps.hivecreatureapp.HiveCreatureListProvider
 
 @Composable
 fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modifier = Modifier) {
@@ -29,7 +28,7 @@ fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modif
                Image(
                    painterResource(id = favoriteUnitCardInfo.iconId),
                    contentDescription = null,
-                   modifier = Modifier.heightIn(min = 80.dp),
+                   modifier = Modifier.size(80.dp),
                    contentScale = ContentScale.Crop
                )
                Text(favoriteUnitCardInfo.name,
@@ -40,14 +39,8 @@ fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modif
     }
 }
 
-class FavoriteUnitCardInfo(val name: String, @DrawableRes val iconId: Int) {
-    companion object {
-        val previewData = FavoriteUnitCardInfo(HiveCreatureListProvider.CREATURE_LIST[0].name, HiveCreatureListProvider.CREATURE_LIST[0].unitImage)
-    }
-}
-
 @Preview
 @Composable
 fun previewFavoriteUnitCard() {
-    FavoriteUnitCard(favoriteUnitCardInfo = FavoriteUnitCardInfo.previewData)
+    FavoriteUnitCard(favoriteUnitCardInfo = FavoriteUnitCardInfoListProvider.PREVIEW_DATA)
 }

@@ -22,9 +22,13 @@ fun UnitSearchApp() {
             Row {
                 BuildingListRow(Modifier.padding(16.dp))
             }
+            Row {
+                FavoriteUnitCardsSection()
+            }
         }
     }
 }
+
 
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
@@ -41,3 +45,4 @@ fun previewUnitSearchAppNightMode() {
         UnitSearchApp()
     }
 }
+

@@ -1,3 +1,4 @@
 <resources>
-
+    <string name="buildingList_sectionTitle">Buildings</string>
+    <string name="favoriteUnits_sectionTitle">Favorite Units</string>
 </resources>
