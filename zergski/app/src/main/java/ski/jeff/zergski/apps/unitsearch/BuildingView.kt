@@ -34,7 +34,7 @@ fun BuildingView(
             contentScale = ContentScale.FillBounds,
             contentDescription = categoryName,
         )
-        Text("Zerg",
+        Text(categoryName,
             modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp))
     }
 }

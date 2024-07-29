@@ -21,9 +21,11 @@ fun SearchAppSection(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit) {
     Column(modifier = modifier) {
-        Text(stringResource(titleId),
-            modifier = Modifier.paddingFromBaseline(top = 40.dp, bottom = 16.dp).padding(horizontal = 16.dp),
-            style = MaterialTheme.typography.titleMedium)
+        Text(text = stringResource(titleId),
+            modifier = Modifier.
+                paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp),
+            style = MaterialTheme.typography.titleLarge)
         content()
     }
 }
