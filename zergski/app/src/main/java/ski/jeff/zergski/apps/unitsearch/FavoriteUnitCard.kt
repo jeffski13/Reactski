@@ -1,5 +1,6 @@
 package ski.jeff.zergski.apps.unitsearch
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,7 +24,11 @@ import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
 fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modifier = Modifier) {
-    Surface(modifier = modifier, shape = RoundedCornerShape(8.dp)) {
+    Surface(
+        modifier = modifier,
+        shape = RoundedCornerShape(8.dp),
+        color = MaterialTheme.colorScheme.surfaceVariant
+    ) {
         Column(modifier = Modifier.width(255.dp)){
             Row (verticalAlignment = Alignment.CenterVertically){
                Image(
@@ -33,6 +38,7 @@ fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modif
                    contentScale = ContentScale.Crop
                )
                Text(favoriteUnitCardInfo.name,
+                   color = MaterialTheme.colorScheme.onSurface,
                    modifier = Modifier.padding(horizontal = 16.dp),
                    style = MaterialTheme.typography.titleMedium)
             }
@@ -40,9 +46,17 @@ fun FavoriteUnitCard(favoriteUnitCardInfo: FavoriteUnitCardInfo, modifier: Modif
     }
 }
 
-@Preview
+@Preview (uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
 @Composable
 fun previewFavoriteUnitCard() {
+    ZergskiTheme {
+        FavoriteUnitCard(favoriteUnitCardInfo = FavoriteUnitCardInfoListProvider.PREVIEW_DATA)
+    }
+}
+
+@Preview (uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun previewFavoriteUnitCardDarkMode() {
     ZergskiTheme {
         FavoriteUnitCard(favoriteUnitCardInfo = FavoriteUnitCardInfoListProvider.PREVIEW_DATA)
     }
