@@ -22,7 +22,7 @@ import ski.jeff.zergski.ui.theme.ZergskiTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar() {
-    (TextField(value = "",
+    TextField(value = "",
         onValueChange = {},
         modifier = Modifier
             .fillMaxWidth()
@@ -38,7 +38,7 @@ fun SearchBar() {
             Text("Unit Name")
         }
 
-    ))
+    )
 }
 
 
