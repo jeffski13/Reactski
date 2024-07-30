@@ -1,6 +1,7 @@
 package ski.jeff.zergski.apps.basemanagementapp
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -13,14 +14,22 @@ import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
 fun BaseManagementApp(){
-    var dronesHatched = rememberSaveable { mutableStateOf(0) }
+    val dronesHatched = rememberSaveable { mutableStateOf(0) }
+    val checkBoxEnabled = rememberSaveable { mutableStateOf(false) }
+    val onCheckBoxClicked: (Boolean) -> Unit = {
+        checkBoxEnabled.value = it
+    }
 
     ZergskiTheme {
         Surface(color = MaterialTheme.colorScheme.surface, modifier = Modifier.fillMaxSize()) {
-            NumberOfDrones(dronesHatched.value, {dronesHatched.value++},dronesHatched.value < 5, dronesHatched.value > 0)
+            Column {
+                NumberOfDrones(dronesHatched.value, {dronesHatched.value++},dronesHatched.value < 5, dronesHatched.value > 0)
+                BaseTaskView("howdy", checkBoxEnabled.value, onCheckBoxClicked, {})
+            }
         }
     }
 }
+
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
 @Composable
