@@ -1,24 +1,25 @@
 package ski.jeff.zergski.apps.basemanagementapp
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
 fun NumberOfDrones(modifier: Modifier = Modifier){
-    var dronesHatched = 0
+    var dronesHatched = rememberSaveable { mutableStateOf(0) }
     Column {
-        Text("Drones Created: $dronesHatched", modifier = modifier.padding(16.dp))
-        Button(onClick = {dronesHatched++}) {
+        Button(onClick = {dronesHatched.value++}, enabled = (dronesHatched.value < 5)) {
             Text("spawn drone")
-            
+        }
+        if(dronesHatched.value > 0) {
+            Text("Drones Created: ${dronesHatched.value}", modifier = modifier.padding(16.dp))
         }
     }
 }
