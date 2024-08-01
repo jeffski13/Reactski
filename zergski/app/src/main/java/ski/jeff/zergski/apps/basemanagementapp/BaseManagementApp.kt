@@ -43,7 +43,8 @@ class TaskListViewModel: ViewModel() {
     }
 
     fun onTaskStateUpdated(task: BaseTask, state: Boolean) {
-        task.onCheckChanged(state)
+        println("onTaskStateUpdated: ${task.id} $state")
+        task.isChecked = state
     }
 
 }

@@ -1,7 +1,3 @@
 package ski.jeff.zergski.apps.basemanagementapp
 
-data class BaseTask(val id: Int, val taskDescription: String, var isChecked: Boolean) {
-    fun onCheckChanged(checkedState: Boolean) {
-        isChecked = checkedState
-    }
-}
+data class BaseTask(val id: Int, val taskDescription: String, var isChecked: Boolean)
