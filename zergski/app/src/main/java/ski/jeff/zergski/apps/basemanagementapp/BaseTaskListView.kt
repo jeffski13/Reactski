@@ -14,7 +14,7 @@ fun BaseTaskListView(taskList: List<BaseTask>,
 
     LazyColumn(modifier = modifier) {
         items(items = taskList, key = {it.id}) { task ->
-            BaseTaskView(task.taskDescription, task.isChecked,
+            BaseTaskView(task.taskDescription, task.isChecked.value,
                 {
                     onCheckStateChange(task, it)
                 }, {

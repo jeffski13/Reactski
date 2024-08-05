@@ -22,7 +22,11 @@ import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 
 @Composable
-fun BaseTaskView(taskText: String, isChecked: Boolean, onCheckboxClicked: (Boolean) -> Unit, onXClicked: () -> Unit, modifier: Modifier = Modifier){
+fun BaseTaskView(taskText: String,
+    isChecked: Boolean,
+    onCheckboxClicked: (Boolean) -> Unit,
+    onXClicked: () -> Unit,
+    modifier: Modifier = Modifier){
 
     Surface(color = MaterialTheme.colorScheme.surfaceVariant) {
         Row(modifier = modifier.padding(8.dp),
