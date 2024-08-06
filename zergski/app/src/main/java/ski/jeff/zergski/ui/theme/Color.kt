@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 val light_primary = Color(57, 0, 80, 255)  // ElevatedButton text, Button color
 val light_onPrimary = Color(255, 255, 255, 255)  // Button text
-val light_onPrimaryContainer = Color(0, 72, 255, 255)
+val light_onPrimaryContainer = Color(56, 32, 100, 255) //floating action button text color
 val light_secondary = Color(255, 10, 10, 255)
 val light_onSecondary = Color(0, 231, 23, 255)
 val light_onSecondaryContainer = Color(56, 32, 100, 255) //bottom nav icon color
@@ -18,7 +18,7 @@ val light_onBackground = Color(205, 197, 219, 255) //background color behind the
 
 val dark_primary = Color(214, 214, 214, 255) // ElevatedButton text, Button color
 val dark_onPrimary = Color(65, 37, 116, 255) // Button text
-val dark_onPrimaryContainer = Color(0, 55, 255, 255)
+val dark_onPrimaryContainer = Color(214, 214, 214, 255) //floating action button text color
 val dark_secondary = Color(255, 0, 0, 255)
 val dark_onSecondary = Color(0, 231, 23, 255)
 val dark_onSecondaryContainer = Color(173, 169, 180, 255) //bottom nav icon color
