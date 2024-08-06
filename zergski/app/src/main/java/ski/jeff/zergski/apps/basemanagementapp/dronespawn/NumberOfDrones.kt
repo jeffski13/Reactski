@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp
+package ski.jeff.zergski.apps.basemanagementapp.dronespawn
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

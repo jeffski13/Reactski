@@ -1,38 +1,32 @@
 package ski.jeff.zergski.apps.basemanagementapp
 
 import android.content.res.Configuration
-import android.view.KeyEvent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import ski.jeff.zergski.apps.basemanagementapp.dronespawn.DroneSpawnViewModel
+import ski.jeff.zergski.apps.basemanagementapp.dronespawn.NumberOfDrones
+import ski.jeff.zergski.apps.basemanagementapp.tasks.BaseTaskListView
+import ski.jeff.zergski.apps.basemanagementapp.tasks.CreateTaskDialog
+import ski.jeff.zergski.apps.basemanagementapp.tasks.TaskManagerViewModel
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
 fun BaseManagementApp(modifier: Modifier = Modifier,
-    droneSpawnViewModel: DroneSpawnViewModel= viewModel(),
-    taskManagerViewModel: TaskManagerViewModel= viewModel()){
+    droneSpawnViewModel: DroneSpawnViewModel = viewModel(),
+    taskManagerViewModel: TaskManagerViewModel = viewModel()){
     ZergskiTheme {
         Scaffold(modifier = modifier, floatingActionButton = { ExtendedExample({
             taskManagerViewModel.onOpenCreateTaskDialogueClicked()
@@ -71,77 +65,6 @@ fun BaseManagementApp(modifier: Modifier = Modifier,
         }
     }
 }
-
-@Composable
-fun CreateTaskDialog(
-    onDismissRequest: () -> Unit,
-    onConfirmation: () -> Unit,
-    dialogTitle: String,
-    dialogText: String,
-    newTaskText: State<String>,
-    onNewTaskTextUpdated: (String) -> Unit,
-    onEnterClicked: () -> Unit,
-) {
-    AlertDialog(
-        icon = {
-            Icon(Icons.Default.Info, contentDescription = "Example Icon")
-        },
-        title = {
-            Text(text = dialogTitle)
-        },
-        text = {
-            Text(text = dialogText)
-            TaskCreateEditField(newTaskText, onNewTaskTextUpdated, onEnterClicked)
-        },
-        onDismissRequest = {
-            onDismissRequest()
-        },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    onConfirmation()
-                }
-            ) {
-                Text("Create")
-            }
-        },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    onDismissRequest()
-                }
-            ) {
-                Text("Dismiss")
-            }
-        }
-    )
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun TaskCreateEditField(currentValue: State<String>,
-    onValueChanged: (String)-> Unit,
-    onEnterClicked: () -> Unit,
-) {
-    TextField(
-        value = currentValue.value,
-        onValueChange = onValueChanged,
-        label = { Text("Label") },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-        keyboardActions = KeyboardActions(
-            onDone = {}
-        ),
-        modifier = Modifier.onKeyEvent {
-            if (it.nativeKeyEvent.keyCode == KeyEvent.KEYCODE_ENTER){
-                onEnterClicked()
-                true
-            }
-            false
-        }
-    )
-}
-
 
 @Composable
 fun ExtendedExample(onClick: () -> Unit) {

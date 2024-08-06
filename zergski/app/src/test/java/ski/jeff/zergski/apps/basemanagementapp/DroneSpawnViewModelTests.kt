@@ -3,6 +3,7 @@ package ski.jeff.zergski.apps.basemanagementapp
 import org.junit.Test
 
 import org.junit.Assert.*
+import ski.jeff.zergski.apps.basemanagementapp.dronespawn.DroneSpawnViewModel
 
 /**
  * Example local unit test, which will execute on the development machine (host).

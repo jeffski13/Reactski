@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp
+package ski.jeff.zergski.apps.basemanagementapp.tasks
 
 import java.util.UUID
 
