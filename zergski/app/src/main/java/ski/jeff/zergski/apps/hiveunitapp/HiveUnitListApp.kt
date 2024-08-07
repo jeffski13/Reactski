@@ -37,7 +37,6 @@ fun HiveUnitListApp(hiveUnitAppViewModel: HiveUnitAppViewModel = viewModel()) {
             }
         }
     }
-
 }
 
 
