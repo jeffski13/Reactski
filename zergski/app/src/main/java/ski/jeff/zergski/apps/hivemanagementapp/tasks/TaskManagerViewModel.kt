@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp.tasks
+package ski.jeff.zergski.apps.hivemanagementapp.tasks
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -13,13 +13,13 @@ class TaskManagerViewModel: ViewModel() {
     private val _createTaskText = mutableStateOf("")
     val createTaskText: State<String> = _createTaskText
 
-    private val _baseTaskList = BaseTaskProvider.getBaseTaskList().toMutableStateList()
-    val taskList: List<BaseTask> = _baseTaskList
-    fun removeBaseTask(task: BaseTask) {
+    private val _baseTaskList = HiveTaskProvider.getBaseTaskList().toMutableStateList()
+    val taskList: List<HiveTask> = _baseTaskList
+    fun removeBaseTask(task: HiveTask) {
         _baseTaskList.remove(task)
     }
 
-    fun onTaskStateUpdated(task: BaseTask, state: Boolean) {
+    fun onTaskStateUpdated(task: HiveTask, state: Boolean) {
         println("onTaskStateUpdated: ${task.id} $state")
         task.isChecked.value = state
     }
@@ -35,7 +35,7 @@ class TaskManagerViewModel: ViewModel() {
 
     fun onConfirmCreateTaskClicked() {
         if(_isShowingCreateBaseTask.value) {
-            _baseTaskList.add(BaseTask(UUID.randomUUID().toString(), _createTaskText.value))
+            _baseTaskList.add(HiveTask(UUID.randomUUID().toString(), _createTaskText.value))
             _createTaskText.value = ""
             _isShowingCreateBaseTask.value = false
         }

@@ -1,4 +1,4 @@
-package ski.jeff.zergski.hivecreatureapp
+package ski.jeff.zergski.apps.hiveunitapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

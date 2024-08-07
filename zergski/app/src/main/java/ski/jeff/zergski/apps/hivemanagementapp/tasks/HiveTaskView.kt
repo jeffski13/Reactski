@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp.tasks
+package ski.jeff.zergski.apps.hivemanagementapp.tasks
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 
 @Composable
-fun BaseTaskView(taskText: String,
+fun HiveTaskView(taskText: String,
     isChecked: Boolean,
     onCheckboxClicked: (Boolean) -> Unit,
     onXClicked: () -> Unit,
@@ -54,7 +54,7 @@ fun BaseTaskView(taskText: String,
 @Composable
 fun previewBaseTask() {
     ZergskiTheme {
-        BaseTaskView("yo", false, {}, {})
+        HiveTaskView("yo", false, {}, {})
     }
 }
 
@@ -62,6 +62,6 @@ fun previewBaseTask() {
 @Composable
 fun previewBaseTaskDarkMode() {
     ZergskiTheme {
-        BaseTaskView("yo", false, {}, {})
+        HiveTaskView("yo", false, {}, {})
     }
 }

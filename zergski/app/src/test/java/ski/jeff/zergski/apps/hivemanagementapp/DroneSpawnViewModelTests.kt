@@ -1,9 +1,9 @@
-package ski.jeff.zergski.apps.basemanagementapp
+package ski.jeff.zergski.apps.hivemanagementapp
 
 import org.junit.Test
 
 import org.junit.Assert.*
-import ski.jeff.zergski.apps.basemanagementapp.dronespawn.DroneSpawnViewModel
+import ski.jeff.zergski.apps.hivemanagementapp.dronespawn.DroneSpawnViewModel
 
 /**
  * Example local unit test, which will execute on the development machine (host).

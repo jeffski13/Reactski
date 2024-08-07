@@ -1,9 +1,9 @@
-package ski.jeff.zergski.apps.basemanagementapp
+package ski.jeff.zergski.apps.hivemanagementapp
 
 import org.junit.Test
 
 import org.junit.Assert.*
-import ski.jeff.zergski.apps.basemanagementapp.tasks.TaskManagerViewModel
+import ski.jeff.zergski.apps.hivemanagementapp.tasks.TaskManagerViewModel
 
 /**
  *

@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp.tasks
+package ski.jeff.zergski.apps.hivemanagementapp.tasks
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -6,14 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun BaseTaskListView(taskList: List<BaseTask>,
-    onCheckStateChange: (BaseTask, Boolean) -> Unit,
-    onXPressed: (BaseTask) -> Unit,
+fun HiveTaskListView(taskList: List<HiveTask>,
+    onCheckStateChange: (HiveTask, Boolean) -> Unit,
+    onXPressed: (HiveTask) -> Unit,
     modifier: Modifier = Modifier) {
 
     LazyColumn(modifier = modifier) {
         items(items = taskList, key = {it.id}) { task ->
-            BaseTaskView(task.taskDescription, task.isChecked.value,
+            HiveTaskView(task.taskDescription, task.isChecked.value,
                 {
                     onCheckStateChange(task, it)
                 }, {

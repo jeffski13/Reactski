@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.hivecreatureapp
+package ski.jeff.zergski.apps.hiveunitapp
 
 import android.content.res.Configuration
 import androidx.compose.animation.core.Spring
@@ -22,10 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -33,40 +30,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import ski.jeff.zergski.ui.theme.ZergskiTheme
-
-class HiveCreatureInfoCardData(val hiveCreatureInformation: HiveCreatureInformation, val index: Int)
 
 /**
  * thie needs to be called within the [setContent]
  */
 @Composable
-fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
-    val hiveCreatureInformation = hiveCreatureInfoCardData.hiveCreatureInformation
-    var isShowingInfo by rememberSaveable { mutableStateOf(false) }
-    val extraRoomskiBelowHeight: Dp
-    val iconLook: ImageVector
-    val dropdownContentDescription: String?
-    if(isShowingInfo) {
-        extraRoomskiBelowHeight = 10.dp
-        iconLook = Icons.Filled.ExpandLess
-        dropdownContentDescription = null
-    }
-    else {
-        extraRoomskiBelowHeight = 0.dp
-        iconLook = Icons.Filled.ExpandMore
-        dropdownContentDescription = null
-    }
-    val extraRoomskiBelow by animateDpAsState(extraRoomskiBelowHeight,
+fun HiveUnitInfoCard(
+    hiveUnitInfoCardData: HiveUnitInfoCardData,
+) {
+
+    val extraRoomskiBelow = animateDpAsState(hiveUnitInfoCardData.extraRoomskiBelowHeight.value,
         spring(dampingRatio = Spring.DampingRatioMediumBouncy,
             stiffness = Spring.StiffnessLow),
         "some label??? for animation?")
-
-    val onCardClicked: () -> Unit = {
-        isShowingInfo = !isShowingInfo
-    }
 
     Surface(modifier = Modifier.padding(4.dp),
         shape = RoundedCornerShape(6.dp)) {
@@ -74,13 +54,13 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
 
             SelectionContainer {
                 Row(modifier = Modifier
-                    .padding(2.dp, 0.dp, 0.dp, extraRoomskiBelow.coerceAtLeast(0.dp))
-                    .clickable { isShowingInfo = !isShowingInfo },
+                    .padding(2.dp, 0.dp, 0.dp, extraRoomskiBelow.value.coerceAtLeast(0.dp))
+                    .clickable { hiveUnitInfoCardData.onIsShowingToggle() },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Column(modifier = Modifier.weight(0.25f)) {
-                        Image(painter = painterResource(id = hiveCreatureInformation.unitImage),
-                            contentDescription = stringResource(id = hiveCreatureInformation.unitImageContentDescriptionStringId),
+                        Image(painter = painterResource(id = hiveUnitInfoCardData.hiveUnitInformation.unitImage),
+                            contentDescription = stringResource(id = hiveUnitInfoCardData.hiveUnitInformation.unitImageContentDescriptionStringId),
                             modifier = Modifier
                                 .size(100.dp)
                                 .padding(4.dp)
@@ -94,14 +74,14 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
 
                     ) {
                             Text(
-                                text = hiveCreatureInformation.name,
+                                text = hiveUnitInfoCardData.hiveUnitInformation.name,
                                 modifier = Modifier.padding(20.dp, 5.dp),
                                 style = MaterialTheme.typography.headlineMedium.copy(
                                     fontWeight = FontWeight.Bold
                                 )
                             )
                             Text(
-                                text = "Order: ${hiveCreatureInfoCardData.index.toString()}",
+                                text = "Order: ${hiveUnitInfoCardData.index.toString()}",
                                 modifier = Modifier.padding(20.dp, 5.dp),
                             )
                     }
@@ -110,10 +90,10 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
                             .weight(0.15f)
 
                     ) {
-                        IconButton(onClick = onCardClicked) {
+                        IconButton(onClick = { hiveUnitInfoCardData.onIsShowingToggle() }) {
                             Icon(
-                                imageVector = iconLook,
-                                contentDescription = dropdownContentDescription
+                                imageVector = hiveUnitInfoCardData.iconLook,
+                                contentDescription = hiveUnitInfoCardData.dropdownContentDescription
                             )
                         }
                     }
@@ -121,11 +101,11 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
             }
             Row(modifier = Modifier
                 .padding(10.dp, 0.dp)) {
-                if (isShowingInfo) {
-                    Column (modifier = Modifier.clickable { onCardClicked() },) {
+                if (hiveUnitInfoCardData.isShowingInfo.value) {
+                    Column (modifier = Modifier.clickable { hiveUnitInfoCardData.onIsShowingToggle() },) {
                         SelectionContainer {
                             Text(
-                                text = hiveCreatureInformation.info,
+                                text = hiveUnitInfoCardData.hiveUnitInformation.info,
                                 modifier = Modifier
                                     .padding(20.dp, 5.dp, 20.dp, 20.dp,)
                             )
@@ -141,7 +121,7 @@ fun HiveCreatureInfoCard(hiveCreatureInfoCardData: HiveCreatureInfoCardData) {
 @Composable
 fun previewHiveCreatureInfoCard() {
     ZergskiTheme {
-        HiveCreatureInfoCard(HiveCreatureInfoCardData(HiveCreatureListProvider.CREATURE_LIST[0], 0))
+        HiveUnitInfoCard(HiveUnitInfoCardData(HiveUnitListProvider.CREATURE_LIST[0], 0))
     }
 }
 
@@ -149,6 +129,6 @@ fun previewHiveCreatureInfoCard() {
 @Composable
 fun previewHiveCreatureInfoCarddarkMode() {
     ZergskiTheme {
-        HiveCreatureInfoCard(HiveCreatureInfoCardData(HiveCreatureListProvider.CREATURE_LIST[0], 0))
+        HiveUnitInfoCard(HiveUnitInfoCardData(HiveUnitListProvider.CREATURE_LIST[0], 0))
     }
 }

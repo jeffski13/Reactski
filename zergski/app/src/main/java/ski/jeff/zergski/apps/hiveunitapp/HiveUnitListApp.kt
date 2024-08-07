@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.hivecreatureapp
+package ski.jeff.zergski.apps.hiveunitapp
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -11,32 +11,27 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ski.jeff.zergski.hivecreatureapp.WelcomeToZergski
+import androidx.lifecycle.viewmodel.compose.viewModel
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
-fun HiveCreaureListApp(hiveCreatureInfoCardDataList: List<HiveCreatureInfoCardData> = listOf()) {
-    var isShowingWelcome by rememberSaveable { mutableStateOf(true) }
-
+fun HiveUnitListApp(hiveUnitAppViewModel: HiveUnitAppViewModel = viewModel()) {
 
     Surface {
-        if (isShowingWelcome) {
-            WelcomeToZergski(onStartClicked = { isShowingWelcome = !isShowingWelcome })
+        if (hiveUnitAppViewModel.isShowingWelcome.value) {
+            WelcomeToZergski(onStartClicked = {hiveUnitAppViewModel.onStartClicked()})
         } else {
             Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.onBackground).fillMaxSize()) {
-                Button(onClick = { isShowingWelcome = !isShowingWelcome }) {
+                Button(onClick = { hiveUnitAppViewModel.onHomeClicked() }) {
                     Text("Home")
                 }
                 LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
-                    items(items = hiveCreatureInfoCardDataList) { nextCreatureCardData ->
-                        HiveCreatureInfoCard(nextCreatureCardData)
+                    items(items = hiveUnitAppViewModel.hiveUnitInfoCardDataList) { nextCreatureCardData ->
+                        println("creating another card with ${nextCreatureCardData.index}")
+                        HiveUnitInfoCard(nextCreatureCardData)
                     }
                 }
             }
@@ -51,7 +46,7 @@ fun HiveCreaureListApp(hiveCreatureInfoCardDataList: List<HiveCreatureInfoCardDa
 @Composable
 fun AnyNameSkiForPreview() {
     ZergskiTheme {
-        HiveCreaureListApp(HiveCreatureListProvider().getPreviewList())
+        HiveUnitListApp()
     }
 }
 
@@ -60,6 +55,6 @@ fun AnyNameSkiForPreview() {
 @Composable
 fun AnyNameSkiForPreviewDarkMode() {
     ZergskiTheme {
-        HiveCreaureListApp(HiveCreatureListProvider().getPreviewList())
+        HiveUnitListApp()
     }
 }

@@ -1,4 +1,4 @@
-package ski.jeff.zergski.apps.basemanagementapp
+package ski.jeff.zergski.apps.hivemanagementapp
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -16,15 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import ski.jeff.zergski.apps.basemanagementapp.dronespawn.DroneSpawnViewModel
-import ski.jeff.zergski.apps.basemanagementapp.dronespawn.NumberOfDrones
-import ski.jeff.zergski.apps.basemanagementapp.tasks.BaseTaskListView
-import ski.jeff.zergski.apps.basemanagementapp.tasks.CreateTaskDialog
-import ski.jeff.zergski.apps.basemanagementapp.tasks.TaskManagerViewModel
+import ski.jeff.zergski.apps.hivemanagementapp.dronespawn.DroneSpawnViewModel
+import ski.jeff.zergski.apps.hivemanagementapp.dronespawn.NumberOfDrones
+import ski.jeff.zergski.apps.hivemanagementapp.tasks.HiveTaskListView
+import ski.jeff.zergski.apps.hivemanagementapp.tasks.CreateTaskDialog
+import ski.jeff.zergski.apps.hivemanagementapp.tasks.TaskManagerViewModel
 import ski.jeff.zergski.ui.theme.ZergskiTheme
 
 @Composable
-fun BaseManagementApp(modifier: Modifier = Modifier,
+fun HiveManagementApp(modifier: Modifier = Modifier,
     droneSpawnViewModel: DroneSpawnViewModel = viewModel(),
     taskManagerViewModel: TaskManagerViewModel = viewModel()){
     ZergskiTheme {
@@ -41,7 +41,7 @@ fun BaseManagementApp(modifier: Modifier = Modifier,
                         isButtonEnabled =  droneSpawnViewModel.isAddDroneEnabled,
                         isDroneCountShowing = droneSpawnViewModel.isDroneCountShowing
                     )
-                    BaseTaskListView(
+                    HiveTaskListView(
                         taskList = taskManagerViewModel.taskList,
                         onCheckStateChange = { task, state -> taskManagerViewModel.onTaskStateUpdated(task, state) },
                         onXPressed = {taskManagerViewModel.removeBaseTask(it)}
@@ -79,11 +79,11 @@ fun ExtendedExample(onClick: () -> Unit) {
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true)
 @Composable
 fun previewBaseManagementApp() {
-    BaseManagementApp()
+    HiveManagementApp()
 }
 
 @Preview (uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun previewBaseManagementAppDarkMode() {
-    BaseManagementApp()
+    HiveManagementApp()
 }

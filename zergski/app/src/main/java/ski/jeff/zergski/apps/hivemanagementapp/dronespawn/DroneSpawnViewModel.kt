@@ -1,7 +1,6 @@
-package ski.jeff.zergski.apps.basemanagementapp.dronespawn
+package ski.jeff.zergski.apps.hivemanagementapp.dronespawn
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 
 class DroneSpawnViewModel: ViewModel() {
